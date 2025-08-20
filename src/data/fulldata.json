@@ -1,0 +1,328 @@
+ [{
+    "name": "Piemonte",
+    "description": "Vinets hjärta! I nordvästra Italien ligger Piemonte. Landskapet har lika flådiga viner som vyer. Piemonte bjuder ofta på klassiska vinstilar och kanske världens bästa viner när du träffat rätt. Vad väljer du? Barolo, Dogliani eller Alta Langhe?",
+    "wineries": [
+      {
+        "name": "Cá Ordano",
+        "videoId": "R15YEc9_3Uk",
+        "email": "mluisa.boffo@gmail.com",
+        "phone":"3480037750",
+        "address":"VIA CASA ORDANO SNC 15020 CAMINO AL",
+        "wineBoxes": [
+          {
+            "name": "Cá Ordano",
+            "description": "Innehåller 6 röda",
+            "price": 1200,
+            "availableQuantity": 99,
+            "bottles": [
+              {
+                "title": "Tatù DOC",
+                "area": "Monferrato, Asti, Alessandria",
+                "grape": "Barbera 60%, Nebbiolo 40%",
+                "year": 2017,
+                "alcohol": "13,5%",
+                "wineMaking": "22 dagar med skalmacerering. Fermentering i ståltank och lagring på små franska ekfat. Buteljerat 2019",
+                "description": "Gubbigt, urgott och läckert rödvin. Lagom strama tanniner, väl integrerat vin med mycket röd frukt och utvecklade aromer såsom torkade kryddor och viol. En perfekt matchning med plockmat, ost och chark.",
+                "count": 3
+              },
+              {
+                "title": "Rubino di Cantavenna Uanta DOC",
+                "area": "Monferrato, Asti, Alessandria",
+                "grape": "Barbera 75%, Freisa 15%, Grignolino 10%",
+                "year": 2017,
+                "alcohol": "13,5%",
+                "wineMaking": "24 dagar med skalmacerering, fermentering på ståltank. Lagring på gamla franska ekfat.",
+                "description": "Mycket bra kraft och struktur. Vinet kräver sin mat och den representerar den klassiska stilen på en bra barbera - mörkröd färg, runda tanniner tack vare ekfatslagring, hög syra, röda bär och isnlag av svartpeppar. Så god! Så välgjord! Perfekt att servera till höstens svamprisotto.",
+                "count": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Frecciarossa",
+        "videoId": "4Q2ktdGlEk0",
+        "email": "info@frecciarossa.com",
+        "phone":"+390383804465",
+        "address":"Via Vigorelli, 141, 27045 Casteggio (PV)",
+        "wineBoxes": [
+          {
+            "name": "Frecciarossa",
+            "description": "Innehåller 2 vita och 4 röda",
+            "price": 1100,
+            "availableQuantity": 99,
+            "bottles": [
+              {
+                "title": "Sillery",
+                "area": "Casteggio, Piemonte",
+                "grape": "Pinot Noir 100%",
+                "year": 2019,
+                "alcohol": "12,8%",
+                "wineMaking": "Mjuk pressning för att undvika färgextraktion. Jäsning i 15-16°C under 20-22 dagar. Ingen malolaktisk jäsning. Lagring på ståltank i fem månader.",
+                "description": "Ett av de bästa vita viner vi har provat. Snygg längd med härliga toner av grönt äpple, päron och fläder i kombination med välbalanserad syra och stort avslut. Tips! Servera vinet till grillad fisk, eller varför inte slunga en härlig sommarsallad med chevré och nötter.",
+                "count": 2
+              },
+              {
+                "title": "Uva Rara",
+                "area": "Casteggio, Piemonte",
+                "grape": "Uva Rara 100%",
+                "year": 2018,
+                "alcohol": "13%",
+                "wineMaking": "Druvorna är plockade för hand. Spontanjäsning på ståltank i 25-28°C i ca 10 dagar. Kortvarig skalmaceration. Lagring i sex månader på 225 liters, gamla franska ekfat, 5 månaders lagring på ståltank och vilar 6 månader på flaska.",
+                "description": "Klassisk stil på en bra rosso från norra Italien. Mycket körsbär med hintar av av grönt i doft och smak, läs mint och torkad krydda. Passar till plockbrickan såväl som grillat lamm och potatissallad!",
+                "count": 1
+              },
+              {
+                "title": "Carillo",
+                "area": "Casteggio, Piemonte",
+                "grape": "Pinot Noir 100%",
+                "year": 2019,
+                "alcohol": "13%",
+                "wineMaking": "Varsam krossning av avstjälkade druvor. Spontanjäst på ståltank under 26°C. 8 dagars skalmacerering med push down och pump over. Lagring på ståltank i 9 månader och vilar minst 4 månader på flaska",
+                "description": "Superelegant, kryddig och fräsch. Mogna jordgubbar, hallon och röda körsbär med mjuka tanniner gör vinet vänligt och lätt att älska!",
+                "count": 2
+              },
+              {
+                "title": "Giorgio Odero",
+                "area": "Casteggio, Piemonte",
+                "grape": "Pinot Noir 100%",
+                "year": 2016,
+                "alcohol": "14%",
+                "wineMaking": "Varsam krossning av avstjälkade druvor. Spontanjäst på orostade franska ekfat. 15 dagars skalmacerering med push down och pump over. Lagring på stora ekfat i 12 månader, 6 månader på ståltank. Och vilar minst 12 månader på flaska.",
+                "description": "Kanske den bästa Pinot Noir vi har att erbjuda på Bara Vin. Drick nu eller lagra för senare njutning, vinet klarar upp till 20 års lagring. Vinet har en stabil ryggrad och lovande syra, generöst med jordgubbar och hallon tillsammans med ett kryddigt inslag. Med åren utvecklas toner av svamp, blöta löv och läder.",
+                "count": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Cristina Zoppi",
+        "videoId": "QG6tP-Tyjzg",
+        "email": "zoppicristina@virgilio.it",
+        "phone":"+393884313246",
+        "address":"Frazione Pergati Collina 14/a 14030 Viarigi (asti)",
+        "wineBoxes": [
+          {
+            "name": "Zoppi",
+            "description": "Innehåller 6 röda",
+            "price": 950,
+            "availableQuantity": 99,
+            "bottles": [
+              {
+                "title": "Barbera d`Asti DOCG",
+                "area": "Monferrato, Asti, Piemonte",
+                "grape": "Barbera 100%",
+                "year": 2018,
+                "alcohol": "99%",
+                "wineMaking": "Spontanjäst vin från en Demeter-certifierad producent, lagrad i ståltank 18 månader innan buteljering.",
+                "description": "En mycket välgjord Barbera från en inspirerande poducent. Vinet kan drickas nu men har en potentiell lagringstid upp till 10 år. Vinet har mycket svarta bär och härliga kryddor. Vi får en vibrerande men välbalanserad känsla. Passar utmärkt till grillad kyckling men är också årets bästa pizzavin!",
+                "count": 2
+              },
+              {
+                "title": "Ruchè di Castagnole Monferrato DOCG",
+                "area": "Monferrato, Asti, Piemonte",
+                "grape": "Ruchè 100%",
+                "year": 2019,
+                "alcohol": "13%",
+                "wineMaking": "Spontanjäst vin från en Demeter-certifierad producent, lagrad i ståltank 12 månader innan buteljering.",
+                "description": "Vår nya favoritdruva! Återigen levererar Zoppi ett vin som sticker ut från mängden. Fullspäckad med frukt, torkade örter, fin syra och långt avslut. Ett riktigt pangvin som passar perfekt till både svensk och italiensk husmanskost. Vinet får oss att tänka på mormors underbara kyckling i ugn, fylld med plommon och apelsin.",
+                "count": 2
+              },
+              {
+                "title": "Grignolino d`Asti DOC",
+                "area": "Monferrato, Asti, Piemonte",
+                "grape": "Grignolino 100%",
+                "year": 2019,
+                "alcohol": "12,5%",
+                "wineMaking": "Utvalda och handskördade druvor, spontanjäser med sin egen jäst och lagras på ståltank i 12 månader innan buteljering.",
+                "description": "En stiltypisk Grignolino från en av våra favoritproducenter. Vinet kan drickas nu och har en potentiell lagringstid på 6-8 år. Druvan är typisk i Piemonte, den ger en ljus och läcker färg med inslag av smultron, nypon, torkad salvia och rosor. Dock är Zoppi's grignolino elegantare och större än vad vi är vana vid. Ett måste!",
+                "count": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "La Palazzina",
+        "videoId": "OmNmL6GHqNc",
+        "email": "info@bramaterralapalazzina.com",
+        "phone":"+393282932819",
+        "address":"via Camino 3 13060 Roasio",
+        "wineBoxes": [
+          {
+            "name": "La Palazzina",
+            "description": "Innehåller 6 röda",
+            "price": 1675,
+            "availableQuantity": 99,
+            "bottles": [
+              {
+                "title": "Riserva Bramaterra DOC",
+                "area": "Roasio, Piemonte",
+                "grape": "Nebbiolo 80%, Croatina 12%, Vespolina 5%, Uva rara 3%",
+                "year": 2015,
+                "alcohol": "13%",
+                "wineMaking": "Jäsning och skalmaceration på betong med pump over och push down under 18 dagar. Lagring på stora ekfat i minst 36 månader och vilar sedan 12 månader på flaska.",
+                "description": "Ett stiltypiskt och komplext vin som tar oss till norra Piemonte. Odlingarna är högt belägna, detta ger varma dagar och kyliga nätter vilket är optimalt för en druva som kräver sin tid på rankan. Ett strävt vin med mjuka tanniner, röda bär och utvecklade aromer av läder, torkad ros och tryffel.",
+                "count": 2
+              },
+              {
+                "title": "Rosso",
+                "area": "Roasio, Piemonte",
+                "grape": "Nebbiolo 70%, Vespolina 20%, Croatina 5%, Uva rara 5%",
+                "year": 2018,
+                "alcohol": "12",
+                "wineMaking": "Jäsning och skalmaceration på betong med pump over och push down under 18 dagar. Lagring på stora ekfat i minst 12 månader.",
+                "description": "Ett ungdomligt exemplar av nebbiolo, helt klart gårdens integsvin. Röda bär och fruktighet dominerar i flaskan. Den strama strukturen är låg och gör att vinet lätt kan drickas utan tung och fet mat.",
+                "count": 2
+              },
+              {
+                "title": "Balmi Bioti Bramaterra DOC",
+                "area": "Sostegno, Piemonte",
+                "grape": "Nebbiolo 70%, Croatina 15%, Vespolina 7,5%, Uva rara 7,5%",
+                "year": 2016,
+                "alcohol": "2016",
+                "wineMaking": "Jäsning och skalmaceration på betong med pump over och push down under 15 dagar. Lagring på stora ekfat i ca 30 månader, och vilar sedan 12 månader på flaska.",
+                "description": "Elegant, klassiskt och tidlös i stilen. Kan drickas direkt men kan definitivt läggas för lagring. För dig som söker en klassisk nebbiolo från Piemonte, här har du den! Vinet ger röda bär, eleganta tanniner och börjar utveckla tertiära aromer. Kombinera vinet med stekt svamp, brynt smör och rökt pancetta.",
+                "count": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Anna Maria Abbona",
+        "videoId": "4Q2ktdGlEk0",
+        "email": "info@annamariabbona.it",
+        "phone":"+390173797228",
+        "address":"Fraz.Moncucco 21 12060 Farigliano (CN)",
+        "wineBoxes": [
+          {
+            "name": "Dogliani",
+            "description": "Innehåller 6 röda",
+            "price": 1200,
+            "availableQuantity": 99,
+            "bottles": [
+              {
+                "title": "Sori dij But DOCG",
+                "area": "Dogliani, Piemonte",
+                "grape": "Dolcetto 100%",
+                "year": 2020,
+                "alcohol": "14,5%",
+                "wineMaking": "Vinet jäser med skal i 6 dagar för att sedan lagras i ståltank i 6 månader och vilar ytterligare 6 månader på flaska.",
+                "description": "En härlig och lättdruckan dolcetto. Den klara röda färgen avslöjar smaker av röda plommon och körsbär. Ett mycket välbalanserat vin med bra syra och lagom strama tanniner. Drick den till lättare kötträtter och kalla såser. En favorit och storsäljare!",
+                "count": 2
+              },
+              {
+                "title": "Maioli Superiore DOCG",
+                "area": "Dogliani, Piemonte",
+                "grape": "Dolcetto 100%",
+                "year": 2018,
+                "alcohol": "14,5%",
+                "wineMaking": "Handplockas i oktober varje år. Vinet jäser med skal i 10 dagar för att sedan lagras på ståltank i 10 månader, och vilar på flaska i minst 6 månader.",
+                "description": "Druvorna kommer från gamla stockar med en genomsnittsålder på 80 år. Odlingen ligger i sydostläge och ger långa soltimmar. Vinet är generöst på smaker av mogna svarta bär, kaffe och viol. Det är en fin struktur i vinet tack vare de gamla rötterna som hämtar sin näring djupt ner i jorden. Anna Maria drivs av femte generationen och har fått många priser genom åren, inte minst för sina tunga, snygga Dogliani viner. rekommenderas varmt!",
+                "count": 2
+              },
+              {
+                "title": "San Bernardo DOCG",
+                "area": "Dogliani, Piemonte",
+                "grape": "Dolcetto 100%",
+                "year": 2016,
+                "alcohol": "14,5%",
+                "wineMaking": "Vinet jäser med skal i 12 dagar för att sedan lagras på ståltank i 2 månader. Därefter lagras det i 2500-liters slavonska ekfat i 24 månader följt av ca 2 års vila på flaska.",
+                "description": "Intensiv röd färg som går mot svart. Hintar av svartpeppar och mogna bär, av både röda och svarta sorter. Tanninerna är väl integrerade och tack vare lagringen på ekfat finns härliga toner av balsamvinäger. Ett välkänt vin i Dogliani!",
+                "count": 2
+              }
+            ]
+          },
+          {
+            "name": "Abbona",
+            "description": "Innehåller 2 rosé och 4 röda",
+            "price": 1275,
+            "availableQuantity": 99,
+            "bottles": [
+              {
+                "title": "Rosá",
+                "area": "Langhe, Piemonte",
+                "grape": "Nebbiolo 100%",
+                "year": 2020,
+                "alcohol": "12,5%",
+                "wineMaking": "Musten separeras från sitt skal nästan direkt efter pressning och kyls ner för att jäsa långsamt. På detta sätt behålls den härliga fruktigheten. Vinet buteljeras ungefär två veckor efter skörd och vilar på flaska i fyra månader",
+                "description": "Intressant rosévin med härlig fräschör. Vinet är fullspäckat med sommarbär men tappar varken syra eller ryggrad. En riktigt elegant rosé!",
+                "count": 2
+              },
+              {
+                "title": "Langhe",
+                "area": "Langhe, Piemonte",
+                "grape": "Nebbiolo 100%",
+                "year": 2016,
+                "alcohol": "14%",
+                "wineMaking": "Vinet jäser med skal i 10 dagar och jäser sedan klart utan skalkontakt. Därefter lagras vinet ett år i 2500-liters slavonska ekfat, vinet vilar sedan på flaska i 6 månader innan försäljning.",
+                "description": "Druvorna till detta vin kommer enbart från vinlägen som är minst 500 meter över havet, detta ger druvorna en chans att mogna långsammare i sin egen takt. En lättdrucken nebbiolo med smaker av hallon, röda körsbär och viol. Vibrerande och rolig stil, tack vare närhet till berg och hög altitud. Drick vinet med en god risotto eller kalv!",
+                "count": 2
+              },
+              {
+                "title": "Cadó",
+                "area": "Dogliani, Piemonte",
+                "grape": "Barbera 90%, Dolcetto 10%",
+                "year": 2015,
+                "alcohol": "14,5%",
+                "wineMaking": "Jäser i ståltank, lagras 18 månader på både franska och slavonska ekfat innan den buteljeras och får vila på flaska i minst ett år.",
+                "description": "Barbera rankorna är upp till 80 år gamla och musten är koncentrerad. Härlig syra som rundar av dolcettons fruktighet, eleganta tanniner och toner av vanilj och lakrits. Ett pangvin från en av dom bästa vinhusen i området. Passar till kött och vilt såväl som till en bit mörk choklad.",
+                "count": 2
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Punset",
+        "videoId": "e-OmdTpxczk",
+        "email": "info@vintesa.it",
+        "phone":"0173566412",
+        "address":"Conzorzio Vintesa, Via Zocco 2, 12052 Neive (CN)",
+        "wineBoxes": [
+          {
+            "name": "Punset",
+            "description": "Innehåller 6 röda",
+            "price": 1475,
+            "availableQuantity": 99,
+            "bottles": [
+              {
+                "title": "Barbaresco DOCG Basarin",
+                "area": "Neive, Piemonte",
+                "grape": "Nebbiolo 100%",
+                "year": 2015,
+                "alcohol": "13,5%",
+                "wineMaking": "Vinet jäser med sin naturliga jäst och skalmacereras i minst 4 veckor innan musten får rinna av, och lagras sedan 24 månader i slavonska ekfat innan buteljering.",
+                "description": "Ett av vinmakerskan Marinas flaggskepp. En prisad Barbaresco med silkeslen struktur med inslag av rosor, viol och röda bär. Vinet har väl avrundade tanniner som passar bra ihop med typiska italienska rätter.",
+                "count": 2
+              },
+              {
+                "title": "Neh!",
+                "area": "Neive, Piemonte",
+                "grape": "Dolcetto 50% Barbera 30% Nebbiolo 20%",
+                "year": 2019,
+                "alcohol": "12,5%",
+                "wineMaking": "Druvorna är handplockade och varsamt pressade separat. Spontanjäsning sker med skalkontakt för att få djup i färgen men också för att undvika för torra tanniner. Efter den malolaktiska jäsningen blandas druvjuicen efter sin procent för att få rätt krafter på slutprodukten.",
+                "description": "Publikt och fruktigt! Röda sommarbär sätter huvudsmak på vinet. Torrt vin med lätta tanniner, vinet har bra struktur och är medelfylligt. Detta är ett vin för varje dag och passar till dom flesta maträtter.",
+                "count": 2
+              },
+              {
+                "title": "Barbera d'Alba DOC",
+                "area": "Neive, Piemonte",
+                "grape": "Barbera 100%",
+                "year": 2020,
+                "alcohol": "14%",
+                "wineMaking":"Druvorna skördas så sent som möjligt, avstjälkas och jäser med sin naturliga jäst. Vinet pressas väldigt varsamt och vilar på betong tills nästkommande vår.",
+                "description":"En ärlig barbera som representerar druvans naturliga smak. generöst med jordgubbar och körsbär, välbalanserad syra och härligt avslut. Ett exemplariskt rödvin från en respekterad vinmakerska!",
+                "count": 2
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]      
+   
