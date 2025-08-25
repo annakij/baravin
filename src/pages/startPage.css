@@ -1,0 +1,47 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  box-sizing: border-box;
+  background-color: #f3ecec;
+}
+
+#baravinheader {
+  width: 60vw;
+  max-width: 400px;
+  margin-bottom: 2rem;
+}
+
+p {
+  margin-bottom: 2rem;
+}
+
+#baravinlogo {
+  width: 7rem;
+  margin-top: 2rem;
+}
+
+.custom-button {
+  width: 220px;
+  letter-spacing: 2px;
+  padding: 0.8rem 1rem;
+  margin: 1rem 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.1rem;
+  background-color: #f3ecec;
+  color: #640606;
+  border: 2px solid #640606;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.custom-button:hover {
+  background-color: #640606;
+  color: #fff;
+  transform: scale(1.05);
+}

@@ -1,0 +1,102 @@
+/* Wrapper */
+.navbar {
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 50;
+}
+
+/* Mobile default */
+.navbar-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+}
+
+.navbar-mobile .navbar-logo img {
+  height: 4rem;
+}
+
+/* Desktop hidden by default */
+.navbar-desktop {
+  display: none;
+}
+
+/* Offcanvas (vänster meny i mobil) */
+.offcanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70%;
+  max-width: 300px;
+  height: 100vh;
+  background: white;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+  padding: 2rem 1rem;
+  z-index: 100;
+}
+.offcanvas ul {
+  list-style: none;
+  padding: 0;
+}
+.offcanvas li {
+  margin: 1rem 0;
+}
+
+/* Search bar (offcanvas från toppen) */
+.search-offcanvas {
+  position: absolute;
+  top: 60px; /* under navbar */
+  left: 0;
+  width: 100%;
+  background: white;
+  border-bottom: 1px solid #ddd;
+  padding: 1rem;
+}
+.search-offcanvas input {
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+}
+
+/* Ikoner */
+.icon-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Desktop (≥768px) */
+@media (min-width: 768px) {
+  .navbar-mobile {
+    display: none;
+  }
+  .navbar-desktop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 2rem;
+  }
+  .navbar-desktop .navbar-logo img {
+    height: 4rem;
+  }
+  .navbar-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .navbar-links li a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+  }
+}

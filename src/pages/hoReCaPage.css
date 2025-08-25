@@ -1,0 +1,47 @@
+.custom-container {
+  margin: 0;
+  font-family: Georgia, Times, "Times New Roman", serif;
+  text-align: center;
+  background-color: #f3ecec;
+  min-height: 100vh;
+  color: #420505;
+}
+
+h1,
+p {
+  padding-top: 2rem;
+}
+
+#wineyardHeader {
+  width: 100vw;
+  position: relative;
+}
+
+#baravinLogo {
+  position: fixed;
+  width: 5rem;
+  z-index: 1;
+  left: 50%;
+  transform: translate(-50%);
+  margin-top: 1rem;
+}
+
+button {
+  width: 220px;
+  letter-spacing: 2px;
+  padding: 0.8rem 1rem;
+  margin: 1rem 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.1rem;
+  background-color: #f3ecec;
+  color: #640606;
+  border: 2px solid #640606;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #640606;
+  color: #fff;
+  transform: scale(1.05);
+}
