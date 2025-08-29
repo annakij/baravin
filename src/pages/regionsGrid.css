@@ -35,7 +35,7 @@
 .region-title {
   font-size: 1.25rem;
   font-weight: bold;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
 }
 
 .region-description {
@@ -58,7 +58,7 @@
   text-decoration: underline;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 600px) {
   .regions-grid {
     grid-template-columns: repeat(2, 1fr);
   }

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import abruzzoImg from "../images/Abruzzo.png";
 import Footer from "../components/footer.js";
 import Navbar from "../components/navbar.js";
 import "./regionsGrid.css";
@@ -14,8 +13,19 @@ function RegionsGridPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(process.env.PUBLIC_URL + '/fulldata.json')
-      .then((res) => res.json())
+    const url = 'https://localhost:7001/regions'; // API-ENDPOINT
+
+    fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'XAppVersion': '0.1' // HEADER REQUIREMENT
+      }
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        return res.json();
+      })
       .then((data) => setRegions(data || []))
       .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
@@ -35,11 +45,15 @@ function RegionsGridPage() {
               className="region-card"
               onClick={() => navigate(`/region/${index}`, { state: region })}
             >
-              <img src={abruzzoImg} alt={region.name} />
+              <img 
+                src={`${process.env.PUBLIC_URL}/images/regions/${region.name}.png`} 
+                alt={region.name} 
+              />
+
               <div className="region-content">
                 <h2 className="region-title">{region.name}</h2>
                 <p className="region-description">{region.description}</p>
-                <a className="region-button">Explore Wineboxes →</a>
+                <a className="region-button">Utforska Vinboxar →</a>
               </div>
             </div>
           ))}

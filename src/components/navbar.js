@@ -22,7 +22,7 @@ function Navbar() {
         </a>
 
         {/* Logo centrerad */}
-        <Link to="/" className="navbar-logo">
+        <Link to="/privat" className="navbar-logo">
           <img src={BaraVinLogo} alt="BaraVin" />
         </Link>
 
