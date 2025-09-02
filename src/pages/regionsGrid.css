@@ -33,6 +33,10 @@
 }
 
 .region-title {
+  text-align: start;
+}
+
+.region-title {
   font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 0;

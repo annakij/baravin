@@ -1,4 +1,3 @@
-/* Wrapper */
 .navbar {
   width: 100%;
   border-bottom: 1px solid #ddd;
@@ -8,12 +7,19 @@
   z-index: 50;
 }
 
-/* Mobile default */
+/* Mobile navbar */
 .navbar-mobile {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.8rem 1rem;
+  padding: 1.7rem 1rem;
+  position: relative;
+}
+
+.navbar-mobile .navbar-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .navbar-mobile .navbar-logo img {
@@ -45,11 +51,15 @@
 .offcanvas li {
   margin: 1rem 0;
 }
+.offcanvas li a {
+  text-decoration: none;
+  color: black;
+}
 
 /* Search bar (offcanvas från toppen) */
 .search-offcanvas {
   position: absolute;
-  top: 60px; /* under navbar */
+  top: 60px;
   left: 0;
   width: 100%;
   background: white;
@@ -63,7 +73,7 @@
   border: 1px solid #ccc;
 }
 
-/* Ikoner */
+/* Icons */
 .icon-group {
   display: flex;
   align-items: center;

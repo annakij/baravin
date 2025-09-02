@@ -7,11 +7,6 @@
   color: #420505;
 }
 
-h1,
-p {
-  padding-top: 2rem;
-}
-
 #wineyardHeader {
   width: 100vw;
   position: relative;
@@ -43,5 +38,12 @@ button {
 button:hover {
   background-color: #640606;
   color: #fff;
-  transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+  #wineyardHeader {
+    height: 100vh;
+    width: auto;
+    overflow: hidden;
+  }
 }
