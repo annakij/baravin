@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import BaraVinHeader from "../images/BARA_VIN_logo_transparent.png"
 import Logo from "../images/baravinlogo.avif"
-import "./startPage.css";
+import "./StartPage.css";
 
 
 function StartPage () {

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Footer from "../components/footer.js";
-import Navbar from "../components/navbar.js";
+import Footer from "../components/Footer.js";
+import Navbar from "../components/Navbar.js";
 import api from "../api/axiosInstance.js";
-import "./regionsGrid.css";
+import "./RegionsGrid.css";
 
 // Displays a grid of wine regions fetched from the backend API
 function RegionsGridPage() {
@@ -33,7 +33,6 @@ function RegionsGridPage() {
 
   return (
     <div className="app-container">
-      <Navbar />
       <main className="main-content">
         <div className="regions-grid">
           {regions.map((region, index) => (
@@ -56,7 +55,6 @@ function RegionsGridPage() {
           ))}
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom";
 const AdminPanel = () => {
   const { user } = useAuth();
 
-  if (!user || user.role !== "Admin") {
+  if (!user || user.role !== "0") {
     return <Navigate to="/" />; // skicka bort obehöriga
   }
 

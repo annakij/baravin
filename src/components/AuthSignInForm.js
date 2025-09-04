@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useAuth } from "../context/authContext.js";
-import { authenticate } from "../api/auth";
+import { authenticate } from "../api/auth.js";
 import { useNavigate } from "react-router-dom";
-import "./registerForm.css"
+import "./AuthForms.css"
 
 
 const SignInForm = () => {
@@ -63,10 +63,10 @@ const SignInForm = () => {
 
           <div className="submit-row">
             <button type="submit" disabled={loading}>
-              {loading ? "Loggar in..." : "Sign In"}
+              {loading ? "Loggar in..." : "Logga in"}
             </button>
-            <p>Har du inget konto?{" "}
-              <a className="link" href="/authenticate/register">Registrera dig!</a>
+            <p><br/>Har du inget konto?{" "}
+              <a className="link" href="/authenticate/registrera">Registrera dig!</a>
             </p>
             <p>Glömt ditt lösenord?{" "}
               <a className="link" href="/">Klicka här</a>

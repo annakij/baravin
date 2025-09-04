@@ -3,8 +3,9 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, Search, ShoppingCart, User } from "lucide-react";
 import { useAuth } from "../context/authContext";
-import "./navbar.css";
+import "./Navbar.css";
 import BaraVinLogo from "../images/baravinlogo.avif";
+import { FaInstagram, FaFacebook } from "react-icons/fa";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -48,11 +49,11 @@ function Navbar() {
             <Search size={24} />
           </a>
           {user ? (
-              <Link to="/userpage" className="icon-button">
+              <Link to="/anvandarsida" className="icon-button">
                 <User size={24} color="black" />
               </Link>
             ) : (
-              <Link to="/authenticate/signin" className="icon-button">
+              <Link to="/authenticate/loggain" className="icon-button">
                 <User size={24} color="black" />
               </Link>
             )}
@@ -69,13 +70,13 @@ function Navbar() {
         </Link>
 
         <ul className="navbar-links">
-          <li><Link to="/events">Kommande Vinmässor</Link></li>
-          <li><Link to="/contact">Kontakt</Link></li>
-          <li><Link to="/how-it-works">Hur fungerar det?</Link></li>
+          <li><Link to="/event">Kommande Vinmässor</Link></li>
+          <li><Link to="/kontakt">Kontakt</Link></li>
+          <li><Link to="/privat/instruktioner">Hur fungerar det?</Link></li>
 
           {/* Visa Admin-länk endast om rollen är Admin */}
-          {user && user.role === "Admin" && (
-            <li><Link to="/admin">Adminpanel</Link></li>
+          {user && user.role === "0" && (
+            <li><Link to="/admin">Admin Panel</Link></li>
           )}
         </ul>
 
@@ -84,15 +85,15 @@ function Navbar() {
             <Search size={24} />
           </a>
           {user ? (
-              <Link to="/userpage" className="icon-button">
+              <Link to="/anvandarsida" className="icon-button">
                 <User size={24} color="black" />
               </Link>
             ) : (
-              <Link to="/authenticate/signin" className="icon-button">
+              <Link to="/authenticate/loggain" className="icon-button">
                 <User size={24} color="black" />
               </Link>
             )}
-          <Link to="/cart" className="icon-button">
+          <Link to="/kundvagn" className="icon-button">
             <ShoppingCart size={24} color="black" />
           </Link>
         </div>
@@ -101,28 +102,40 @@ function Navbar() {
       {/* Offcanvas meny för mobil */}
       {menuOpen && (
         <div ref={offcanvasRef} className="offcanvas">
+          <img className="offcanvas-logo" src={BaraVinLogo} alt="BaraVin" />
           <ul>
-            <li><Link to="/events">Kommande Vinmässor</Link></li>
-            <li><Link to="/contact">Kontakt</Link></li>
-            <li><Link to="/how-it-works">Hur fungerar det?</Link></li>
+            <li onClick={() => setMenuOpen(false)}><Link to="/event">Kommande Vinmässor</Link></li>
+            <li onClick={() => setMenuOpen(false)}><Link to="/kontakt">Kontakt</Link></li>
+            <li onClick={() => setMenuOpen(false)}><Link to="/privat/instruktioner">Hur fungerar det?</Link></li>
 
-            {user && user.role === "Admin" && (
-              <li><Link to="/admin">Adminpanel</Link></li>
+            {user && user.role === "0" && (
+              <li onClick={() => setMenuOpen(false)}><Link to="/admin">Admin Panel</Link></li>
             )}
 
             {user ? (
-              <li><a
-              href="/privat"
+              <li><a href="/privat"
               onClick={(e) => {
                 e.preventDefault();
                 logout();
               }}>
-              Logga ut
-            </a></li>
-            ) : (
-              <li><Link to="/authenticate/signin">Logga in</Link></li>
-            )}
+              Logga ut</a></li>)
+               : (<li onClick={() => setMenuOpen(false)}><Link to="/authenticate/loggain">Logga in</Link></li>)}
           </ul>
+          <div className="offcanvas-footer">
+            <a
+              className="footer-icon"
+              href="https://www.instagram.com/baravin.nu"
+              target="_blank"
+              rel="noopener noreferrer"
+            ><FaInstagram size={40} /></a>
+            <a
+              className="footer-icon"
+              href="https://www.facebook.com/baravin.nu"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><FaFacebook size={40} />
+            </a>
+          </div>
         </div>
       )}
 

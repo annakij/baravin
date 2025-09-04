@@ -1,13 +1,10 @@
-import "./footer.css";
+import "./Footer.css";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 
 function Footer() {
   return (
     <footer className="footer">
       <ul className="footer-links">
-        <li>
-          <a className="footer-link" href="#">Villkor</a>
-        </li>
         <li>
           <a
             className="footer-link"
@@ -17,6 +14,9 @@ function Footer() {
           >
             info@baravin.se
           </a>
+        </li>
+        <li>
+          <a className="footer-link" href="/villkor">Allmänna Villkor & Integritetspolicy</a>
         </li>
       </ul>
 
@@ -40,7 +40,7 @@ function Footer() {
       </div>
 
       <p className="footer-copy">
-        &copy; 2025, Bara Vin AB – all rights reserved.
+        &copy; 2025 Bara Vin, Vino Italiano di P.B.J — all rights reserved.
       </p>
     </footer>
   );

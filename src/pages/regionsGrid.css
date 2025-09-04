@@ -1,5 +1,6 @@
 .regions-grid {
   display: grid;
+  min-height: 100vh;
   grid-template-columns: 1fr;
   gap: 1.5rem;
   padding: 1.5rem;

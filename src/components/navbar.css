@@ -36,7 +36,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 70%;
+  width: 60%;
   max-width: 300px;
   height: 100vh;
   background: white;
@@ -44,16 +44,28 @@
   padding: 2rem 1rem;
   z-index: 100;
 }
+.offcanvas-logo {
+  height: 5rem;
+  margin-bottom: 1rem;
+}
 .offcanvas ul {
   list-style: none;
   padding: 0;
 }
 .offcanvas li {
-  margin: 1rem 0;
+  margin: 2rem 0;
 }
 .offcanvas li a {
   text-decoration: none;
   color: black;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+.offcanvas-footer {
+  position: absolute;
+  bottom: 100px;
+  display: flex;
+  gap: 1rem;
 }
 
 /* Search bar (offcanvas från toppen) */

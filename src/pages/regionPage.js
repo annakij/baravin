@@ -1,10 +1,9 @@
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import mockImg from "../images/regions/Abruzzo.png";
 import {ShoppingCart} from "lucide-react";
-import Footer from "../components/footer.js";
-import Navbar from "../components/navbar.js";
-import "./regionPage.css";
+import Footer from "../components/Footer.js";
+import Navbar from "../components/Navbar.js";
+import "./RegionPage.css";
 
 function RegionDetailPage() {
   const location = useLocation();
@@ -15,7 +14,7 @@ function RegionDetailPage() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // hämta från API om region inte redan skickades via state
+    // fetch region data if not passed via state
     if (!regionFromState) {
       const fetchRegion = async () => {
         try {
@@ -43,8 +42,6 @@ function RegionDetailPage() {
   ) || [];
 
   return (
-    <>
-    <Navbar/>
     <div className="region-detail">
       <h1>{region.name}</h1>
       <p>{region.description}</p>
@@ -77,7 +74,7 @@ function RegionDetailPage() {
         </div>
       ))}
 
-      {/* MODAL VINBOX DETALJER */}
+      {/* MODAL WINEBOX DETAILS */}
       {selectedBox && (
         <div className="modal-overlay" onClick={() => setSelectedBox(null)}>
           <div
@@ -87,8 +84,8 @@ function RegionDetailPage() {
             <h2>{selectedBox.name}</h2>
 
             <h3>Innehåll:</h3>
-            {selectedBox.bottles.map((bottle, i) => (
-              <div key={i} className="bottle-card">
+            {selectedBox.bottles.map((bottle, index) => (
+              <div key={index} className="bottle-card">
                 <h4>{bottle.title} ({bottle.year})</h4>
                 <p><strong>Druvor:</strong> {bottle.grape}</p>
                 <p><strong>Område:</strong> {bottle.area}</p>
@@ -104,8 +101,6 @@ function RegionDetailPage() {
         </div>
       )}
     </div>
-    <Footer/>
-    </>
   );
 }
 

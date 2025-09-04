@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
-import "./registerForm.css";
+import api from "axios";
+import "./AuthForms.css";
+import TermsConditions from "../pages/TermsConditions";
 
 function RegisterForm() {
   const [formData, setFormData] = useState({
@@ -77,19 +78,16 @@ function RegisterForm() {
     const payload = { ...formData };
 
     try {
-      const res = await axios.post(
-        "https://localhost:7001/token/register",
-        payload,
-        {
-          headers: {
-            "XAppVersion": "0.1",
-          },
-        }
-      );
+      const res = await api.post("token/register", payload);
+
       alert("Registrering lyckades!");
+
       console.log("Response:", res.data);
+
     } catch (err) {
+
       console.error(err);
+      
       if (err.response && err.response.data) {
         console.error("Server response data:", err.response.data);
       }
@@ -241,16 +239,13 @@ function RegisterForm() {
 
         {/* Modal for terms */}
         {showTerms && (
-          <div className="modal-overlay">
+          <div className="modal-overlay" onClick={() => setShowTerms(false)} >
             <div className="modal">
               <a
                 onClick={() => setShowTerms(false)}
                 className="modal-close"
-              >x</a>
-              <h3>Villkor</h3>
-              <p>
-                Lägg in villkor
-              </p>
+              >X</a>
+              <TermsConditions />
             </div>
           </div>
         )}
@@ -259,7 +254,7 @@ function RegisterForm() {
         <button type="submit" className="submit-btn">
           Registrera
         </button>
-        <p>Har du redan ett konto? <a className="link" href="/authenticate/signin">Logga in!</a></p>
+        <p><br/>Har du redan ett konto? <a className="link" href="/authenticate/loggain">Logga in!</a></p>
         </div>
 
       </form>

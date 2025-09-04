@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/authContext.js";
-import Navbar from "../components/navbar";
-import Footer from "../components/footer";
-import "./userPage.css";
+import Navbar from "../components/Navbar.js";
+import Footer from "../components/Footer.js";
+import "./UserPage.css";
 import { useNavigate } from "react-router-dom";
-import api from "../api/axiosInstance";
+import api from "../api/axiosInstance.js";
 
 function UserPage() {
     const { logout } = useAuth();
@@ -50,8 +50,6 @@ function UserPage() {
 
   return (
     <>
-      <Navbar />
-
     <h1 className="user-header">Hej {userData.firstName} {""} {userData.lastName}!</h1>
       <div className="userpage">
 
@@ -141,8 +139,6 @@ function UserPage() {
           > Logga ut
           </button>
       </div>
-
-      <Footer />
     </>
   );
 }
