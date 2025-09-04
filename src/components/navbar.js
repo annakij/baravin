@@ -47,9 +47,15 @@ function Navbar() {
           <a className="icon-button" onClick={() => setSearchOpen(!searchOpen)}>
             <Search size={24} />
           </a>
-          <Link to="/authenticate/signin" className="icon-button">
-            <User size={24} color="black"/>
-          </Link>
+          {user ? (
+              <Link to="/userpage" className="icon-button">
+                <User size={24} color="black" />
+              </Link>
+            ) : (
+              <Link to="/authenticate/signin" className="icon-button">
+                <User size={24} color="black" />
+              </Link>
+            )}
           <Link to="/cart" className="icon-button">
             <ShoppingCart size={24} color="black" />
           </Link>
@@ -77,9 +83,15 @@ function Navbar() {
           <a className="icon-button" onClick={() => setSearchOpen(!searchOpen)}>
             <Search size={24} />
           </a>
-          <Link to="/authenticate/signin" className="icon-button">
-            <User size={24} color="black"/>
-          </Link>
+          {user ? (
+              <Link to="/userpage" className="icon-button">
+                <User size={24} color="black" />
+              </Link>
+            ) : (
+              <Link to="/authenticate/signin" className="icon-button">
+                <User size={24} color="black" />
+              </Link>
+            )}
           <Link to="/cart" className="icon-button">
             <ShoppingCart size={24} color="black" />
           </Link>
@@ -100,7 +112,7 @@ function Navbar() {
 
             {user ? (
               <li><a
-              href="#"
+              href="/privat"
               onClick={(e) => {
                 e.preventDefault();
                 logout();

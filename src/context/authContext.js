@@ -1,29 +1,44 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import api from "../api/axiosInstance";
+import { setToken, clearToken } from "../services/tokenService";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // { username, role, token }
+  const [user, setUser] = useState(null); // { username, role }
 
-  // Kolla om token finns i localStorage vid load
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    const storedUser = localStorage.getItem("user");
-    if (token && storedUser) {
-      setUser(JSON.parse(storedUser));
-    }
+    // Try to rehydrate using the refresh cookie
+    const refresh = async () => {
+      try {
+        const res = await api.post("/token/refresh-token", {}, { withCredentials: true });
+        const { jwtToken, user: userData } = res.data;
+        setToken(jwtToken);
+        api.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`;
+        setUser(userData);
+      } catch (err) {
+        clearToken();
+        setUser(null);
+      }
+    };
+    refresh();
   }, []);
 
   const login = (userData) => {
-    setUser(userData);
-    localStorage.setItem("token", userData.token);
-    localStorage.setItem("user", JSON.stringify(userData));
+    // userData expected to contain jwtToken and user info
+    const { jwtToken, user: userInfo } = userData;
+    setToken(jwtToken);
+    api.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`;
+    setUser(userInfo || userData);
   };
 
-  const logout = () => {
+  const logout = async () => {
+    try {
+      await api.post("/token/revoke", {}, { withCredentials: true }); // clear server cookie & revoke
+    } catch (err) {}
+    clearToken();
     setUser(null);
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+    window.location.href = "/";
   };
 
   return (

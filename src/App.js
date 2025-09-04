@@ -7,6 +7,7 @@ import RestaurantPage from "./pages/hoReCaPage";
 import AuthenticatePage from "./pages/authenticatePage";
 import AdminPanel from "./pages/adminPanel";
 import StartPage from './pages/startPage';
+import UserPage from './pages/userPage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/authenticate/signin" element={<AuthenticatePage />} />
           <Route path="/authenticate/register" element={<AuthenticatePage />} />
           <Route path="/admin" element={<AdminPanel />} />
+          <Route path="/userpage" element={<UserPage />} />
         </Routes>
     </AuthProvider>
   );

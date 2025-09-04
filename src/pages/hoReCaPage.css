@@ -21,25 +21,6 @@
   margin-top: 1rem;
 }
 
-button {
-  width: 220px;
-  letter-spacing: 2px;
-  padding: 0.8rem 1rem;
-  margin: 1rem 0;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 1.1rem;
-  background-color: #f3ecec;
-  color: #640606;
-  border: 2px solid #640606;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  background-color: #640606;
-  color: #fff;
-}
-
 @media (max-width: 600px) {
   #wineyardHeader {
     height: 100vh;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./registerForm.css";
 
-export default function RegisterForm() {
+function RegisterForm() {
   const [formData, setFormData] = useState({
     email: "",
     mobile: "",
@@ -15,7 +15,6 @@ export default function RegisterForm() {
     country: "",
     password: "",
     confirmPassword: "",
-    termsAccepted: false,
   });
 
   const [errors, setErrors] = useState({});
@@ -76,8 +75,6 @@ export default function RegisterForm() {
     if (!validateForm()) return;
 
     const payload = { ...formData };
-    delete payload.confirmPassword;
-    delete payload.termsAccepted;
 
     try {
       const res = await axios.post(
@@ -85,8 +82,7 @@ export default function RegisterForm() {
         payload,
         {
           headers: {
-            "Content-Type": "application/json",
-            "X-App-Client": "ReactApp", // Anpassa efter behov
+            "XAppVersion": "0.1",
           },
         }
       );
@@ -94,6 +90,9 @@ export default function RegisterForm() {
       console.log("Response:", res.data);
     } catch (err) {
       console.error(err);
+      if (err.response && err.response.data) {
+        console.error("Server response data:", err.response.data);
+      }
       alert("Registrering misslyckades.");
     }
   };
@@ -267,3 +266,5 @@ export default function RegisterForm() {
     </div>
   );
 }
+
+export default RegisterForm;

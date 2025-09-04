@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/footer.js";
 import Navbar from "../components/navbar.js";
+import api from "../api/axiosInstance.js";
 import "./regionsGrid.css";
 
-
+// Displays a grid of wine regions fetched from the backend API
 function RegionsGridPage() {
   const [regions, setRegions] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,22 +14,18 @@ function RegionsGridPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const url = 'https://localhost:7001/regions'; // API-ENDPOINT
-
-    fetch(url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'XAppVersion': '0.1' // HEADER REQUIREMENT
+    const fetchRegions = async () => {
+      try {
+        const res = await api.get("/regions"); // baseURL from axios + "/regions"
+        setRegions(res.data || []);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
       }
-    })
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-        return res.json();
-      })
-      .then((data) => setRegions(data || []))
-      .catch((err) => setError(err.message))
-      .finally(() => setLoading(false));
+    };
+
+    fetchRegions();
   }, []);
 
   if (loading) return <p>Laddar...</p>;
