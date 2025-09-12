@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/authContext.js";
-import "./UserPage.css";
 import { useNavigate } from "react-router-dom";
 import api from "../api/axiosInstance.js";
 import EditAddressModal from "../components/EditAdressModal.js";
 import EditPasswordDropdown from "../components/EditPasswordDropdown.js";
 import ConfirmDeleteAccount from "../components/ConfirmDeleteAccount.js";
+import "./UserPage.css";
 
 function UserPage() {
     const { logout } = useAuth();
@@ -91,7 +91,6 @@ function UserPage() {
             </tbody>
             </table>
         </div>
-
 
         {/* Info-tabell */}
         <div className="profile-section">

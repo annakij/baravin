@@ -7,7 +7,6 @@ function ConfirmDeleteAccount({ isOpen, onClose }) {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
-    const modalRef = useRef();
     const navigate = useNavigate();
 
     if (!isOpen) return null;

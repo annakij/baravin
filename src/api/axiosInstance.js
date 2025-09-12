@@ -29,8 +29,8 @@ api.interceptors.response.use(
       originalRequest._retry = true;
       try {
         const refreshToken = Cookies.get("refreshToken");
-        const res = await axios.post(
-          "https://localhost:7001/token/refresh-token",
+        const res = await api.post(
+          "/token/refresh-token",
           { refreshToken },
           { withCredentials: true, headers: { "XAppVersion": "0.1" } }
         );

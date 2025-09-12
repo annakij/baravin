@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Footer from "../components/Footer.js";
-import Navbar from "../components/Navbar.js";
 import api from "../api/axiosInstance.js";
 import "./RegionsGrid.css";
 

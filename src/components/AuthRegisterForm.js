@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import api from "axios";
+import api from "../api/axiosInstance";
 import "./AuthForms.css";
 import TermsConditions from "../pages/TermsConditions";
 
@@ -78,7 +78,7 @@ function RegisterForm() {
     const payload = { ...formData };
 
     try {
-      const res = await api.post("token/register", payload);
+      const res = await api.post("/token/register", payload);
 
       alert("Registrering lyckades!");
 
