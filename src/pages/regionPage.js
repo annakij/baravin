@@ -1,12 +1,13 @@
 import { useLocation } from "react-router-dom";
+import { useAuth } from "../context/authContext";
+import api from "../api/axiosInstance";
 import { useEffect, useState } from "react";
 import {ShoppingCart} from "lucide-react";
-import Footer from "../components/Footer.js";
-import Navbar from "../components/Navbar.js";
 import "./RegionPage.css";
 
 function RegionDetailPage() {
   const location = useLocation();
+  const { user } = useAuth();
   const regionFromState = location.state;
   const [region, setRegion] = useState(regionFromState || null);
   const [selectedBox, setSelectedBox] = useState(null);
@@ -19,7 +20,7 @@ function RegionDetailPage() {
       const fetchRegion = async () => {
         try {
           setLoading(true);
-          const res = await fetch(); 
+          const res = await fetch();
           if (!res.ok) throw new Error("Kunde inte hämta region");
           const data = await res.json();
           setRegion(data);
@@ -33,6 +34,21 @@ function RegionDetailPage() {
     }
   }, [regionFromState, location.pathname]);
 
+  const handleAddToCart = async (boxId) => {
+    if (!user) {
+      alert("Du måste vara inloggad för att lägga till produkter");
+      return;
+    }
+
+    try {
+      await api.put("/cart", {boxId} ); // skicka med boxId
+      alert("Produkten lades till i kundvagnen!");
+    } catch (err) {
+      console.error(err);
+      alert("Kunde inte lägga till produkten i kundvagnen.");
+    }
+  };
+
   if (loading) return <p>Laddar region...</p>;
   if (error) return <p>Något gick fel: {error}</p>;
   if (!region) return <p>Ingen region hittades</p>;
@@ -42,13 +58,13 @@ function RegionDetailPage() {
   ) || [];
 
   return (
-    <div className="region-detail">
+    <>
+    <div className="region-details">
       <h1>{region.name}</h1>
       <p>{region.description}</p>
 
       {region.wineries?.map((winery, wIndex) => (
         <div key={wIndex} className="winery-section">
-
         <div className="wineboxes-container">
           {allWineBoxes.map((box, index) => (
             <div key={index} className="winebox-card">
@@ -65,7 +81,9 @@ function RegionDetailPage() {
                 <p><em>Från: {box.wineryName}</em></p>
                 <div className="winebox-buttons">
                   <button onClick={() => setSelectedBox(box)}>Detaljer</button>
-                  <button><ShoppingCart /></button>
+                  <button onClick={() => handleAddToCart(box.id)}>
+                    <ShoppingCart />
+                  </button>
                 </div>
               </div>
             </div>
@@ -100,7 +118,8 @@ function RegionDetailPage() {
           </div>
         </div>
       )}
-    </div>
+      </div>
+    </>
   );
 }
 

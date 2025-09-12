@@ -9,4 +9,3 @@ export const authenticate = async (email, password) => {
 
   return response.data; // should include short-lived jwtToken and user info
 };
-

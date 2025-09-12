@@ -57,7 +57,7 @@ function Navbar() {
                 <User size={24} color="black" />
               </Link>
             )}
-          <Link to="/cart" className="icon-button">
+          <Link to="/kundvagn" className="icon-button">
             <ShoppingCart size={24} color="black" />
           </Link>
         </div>
@@ -76,7 +76,7 @@ function Navbar() {
 
           {/* Visa Admin-länk endast om rollen är Admin */}
           {user && user.role === "0" && (
-            <li><Link to="/admin">Admin Panel</Link></li>
+            <li><Link to="/admin">Adminpanel</Link></li>
           )}
         </ul>
 
@@ -109,7 +109,7 @@ function Navbar() {
             <li onClick={() => setMenuOpen(false)}><Link to="/privat/instruktioner">Hur fungerar det?</Link></li>
 
             {user && user.role === "0" && (
-              <li onClick={() => setMenuOpen(false)}><Link to="/admin">Admin Panel</Link></li>
+              <li onClick={() => setMenuOpen(false)}><Link to="/admin">Adminpanel</Link></li>
             )}
 
             {user ? (

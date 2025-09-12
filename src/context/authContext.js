@@ -1,24 +1,28 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import api from "../api/axiosInstance";
-import { setToken, clearToken } from "../services/tokenService";
+import Cookies from "js-cookie";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null); // { username, role }
-
+  
   useEffect(() => {
-    // Try to rehydrate using the refresh cookie
     const refresh = async () => {
+      const refreshToken = Cookies.get("refreshToken");
+      if (!refreshToken) return; // Return if no refresh token
+  
+      // If token - fetch user profile
       try {
-        const res = await api.post("/token/refresh-token", {}, { withCredentials: true });
-        const { jwtToken, user: userData } = res.data;
-        setToken(jwtToken);
-        api.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`;
-        setUser(userData);
+        const res = await api.get(
+          "/customer/profile"
+        );
+        setUser(res.data);
+  
       } catch (err) {
-        clearToken();
         setUser(null);
+        Cookies.remove("jwtToken");
+        Cookies.remove("refreshToken");
       }
     };
     refresh();
@@ -26,19 +30,20 @@ export const AuthProvider = ({ children }) => {
 
   const login = (userData) => {
     // userData expected to contain jwtToken and user info
-    const { jwtToken, user: userInfo } = userData;
-    setToken(jwtToken);
+    const { jwtToken, user: userInfo, refreshToken } = userData;
+
+    Cookies.set("jwtToken", userData.jwtToken, {expires:1, sameSite: 'Strict', secure: true});
+    Cookies.set("refreshToken", userData.refreshToken, {expires:7, sameSite: 'Strict', secure: true});
+
     api.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`;
     setUser(userInfo || userData);
   };
 
   const logout = async () => {
-    try {
-      await api.post("/token/revoke", {}, { withCredentials: true }); // clear server cookie & revoke
-    } catch (err) {}
-    clearToken();
+    Cookies.remove("jwtToken");
+    Cookies.remove("refreshToken");
     setUser(null);
-    window.location.href = "/";
+    window.location.href = "/privat";
   };
 
   return (

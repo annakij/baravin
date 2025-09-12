@@ -16,7 +16,7 @@ function Footer() {
           </a>
         </li>
         <li>
-          <a className="footer-link" href="/villkor">Allmänna Villkor & Integritetspolicy</a>
+          <a className="footer-link" href="/villkor">Allmänna villkor & Integritetspolicy</a>
         </li>
       </ul>
 

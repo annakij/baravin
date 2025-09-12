@@ -113,3 +113,35 @@ input[type="checkbox"]:checked {
   font-size: 1.5rem;
   cursor: pointer;
 }
+
+.modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.password-dropdown {
+  max-width: 400px;
+  margin: 1rem auto;
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.password-dropdown.open {
+  max-height: 600px;
+  opacity: 1;
+  margin-top: 1rem;
+  padding: 3rem;
+  border: 1px solid #ddd;
+}
+
+.dropdown-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}

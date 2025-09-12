@@ -1,0 +1,72 @@
+.confirm-popup {
+  position: absolute;
+  max-width: 400px;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  padding: 12px 14px;
+  z-index: 100;
+}
+
+/* header */
+.confirm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.confirm-header h4 {
+  margin: 0;
+}
+
+/* text */
+.confirm-text {
+  margin: 8px 0 12px;
+}
+
+/* label + input */
+.confirm-label {
+  display: block;
+  font-size: 0.85rem;
+}
+.confirm-input {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 6px;
+  border: 1px solid #d1d5db;
+  box-sizing: border-box;
+  font-size: 0.95rem;
+}
+
+/* error */
+.confirm-error {
+  margin-top: 8px;
+  color: #731515;
+  font-size: 0.9rem;
+}
+
+/* actions */
+.confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+}
+.btn-danger {
+  background: #731515;
+  color: white;
+}
+.btn[disabled],
+.btn[aria-disabled="true"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 400px) {
+  .confirm-popup {
+    max-width: 80vw;
+  }
+}

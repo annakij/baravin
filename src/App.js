@@ -14,6 +14,7 @@ import PrivateLayout from './pages/PrivatePage';
 import WinefairsPage from './pages/WinefairsPage';
 import TermsConditions from './pages/TermsConditions';
 import CookieBanner from './components/CookieBanner';
+import Cart from './components/Cart';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/authenticate" element={<AuthenticatePage />} />
           <Route path="/authenticate/loggain" element={<AuthenticatePage />} />
           <Route path="/authenticate/registrera" element={<AuthenticatePage />} />
+          <Route path="/kundvagn" element={<Cart />} />
         </Route>
 
         {/* Pages without default navbar/ footer */}

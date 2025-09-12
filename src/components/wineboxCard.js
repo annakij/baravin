@@ -1,6 +1,5 @@
-import fakeData from "../data/fulldata.json";
-import "../index.css";
-
+import useLocation from "react-router-dom";
+import "./WineboxCard.css";
 
 function WineboxCard({ product, addToCart }) {
     return (

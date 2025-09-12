@@ -1,14 +1,18 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../context/authContext.js";
-import Navbar from "../components/Navbar.js";
-import Footer from "../components/Footer.js";
 import "./UserPage.css";
 import { useNavigate } from "react-router-dom";
 import api from "../api/axiosInstance.js";
+import EditAddressModal from "../components/EditAdressModal.js";
+import EditPasswordDropdown from "../components/EditPasswordDropdown.js";
+import ConfirmDeleteAccount from "../components/ConfirmDeleteAccount.js";
 
 function UserPage() {
     const { logout } = useAuth();
     const [userData, setUserData] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [deleteAccount, setDeleteAccount] = useState(false);
     const [loading, setLoading] = useState(true);
     const [orders, setOrders] = useState([]);
     const [error, setError] = useState("");
@@ -122,23 +126,42 @@ function UserPage() {
       <div className="user-buttonrow">
           <button
             className="user-button"
-            onClick={() => alert("Ändra adress-funktion här")}
+            onClick={() => setIsModalOpen(true)}
           >Ändra adress
           </button>
           <button
             className="user-button"
-            onClick={handleLogout}
+            onClick={() => setIsDropdownOpen((prev) => !prev)}
           >Byt lösenord
           </button>
           <button
             className="user-button"
             onClick={(e) => {
                 e.preventDefault();
-                logout();
+                handleLogout();
               }}
           > Logga ut
           </button>
+          <button
+            className="user-button"
+            onClick={() => setDeleteAccount(true)}
+          > Radera Konto
+          </button>
       </div>
+      <EditAddressModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        currentProfile={userData}
+        onSave={(updatedProfile) => setUserData(updatedProfile)}
+      />
+      <EditPasswordDropdown
+        isOpen={isDropdownOpen}
+        onClose={() => setIsDropdownOpen(false)}
+      />
+      <ConfirmDeleteAccount
+        isOpen={deleteAccount}
+        onClose={() => setDeleteAccount(false)}
+      />
     </>
   );
 }

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getToken, setToken, clearToken } from "../services/tokenService";
+import Cookies from "js-cookie";
 
 const api = axios.create({
   baseURL: "https://localhost:7001",
@@ -12,7 +12,7 @@ const api = axios.create({
 
 // attach access token from memory
 api.interceptors.request.use((config) => {
-  const token = getToken();
+  const token = Cookies.get("jwtToken"); // Fetch JWT token from cookie
   if (token) {
     config.headers = config.headers || {};
     config.headers["Authorization"] = `Bearer ${token}`;
@@ -28,19 +28,24 @@ api.interceptors.response.use(
     if (error.response && error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       try {
+        const refreshToken = Cookies.get("refreshToken");
         const res = await axios.post(
           "https://localhost:7001/token/refresh-token",
-          {},
+          { refreshToken },
           { withCredentials: true, headers: { "XAppVersion": "0.1" } }
         );
+
         const newToken = res.data.jwtToken;
-        setToken(newToken);
+        Cookies.set("jwtToken", newToken, {expires:1, sameSite: 'Strict', secure: true}); // Update cookie with new token
+
         api.defaults.headers.common["Authorization"] = `Bearer ${newToken}`;
         originalRequest.headers["Authorization"] = `Bearer ${newToken}`;
+
         return api(originalRequest);
+
       } catch (err) {
-        clearToken();
-        window.location.href = "/";
+        Cookies.remove("jwtToken");
+        window.location.href = "/privat";
         return Promise.reject(err);
       }
     }
