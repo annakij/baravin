@@ -7,7 +7,7 @@ import "./Navbar.css";
 import BaraVinLogo from "../images/baravinlogo.avif";
 import { FaInstagram, FaFacebook } from "react-icons/fa";
 
-function Navbar() {
+function Navbar( { cartCount } ) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const { user, logout } = useAuth();
@@ -56,8 +56,11 @@ function Navbar() {
                 <User size={24} color="black" />
               </Link>
             )}
-          <Link to="/kundvagn" className="icon-button">
-            <ShoppingCart size={24} color="black" />
+          <Link to="/kundvagn" className="icon-button cart-wrapper">
+          <ShoppingCart size={24} color="black" />
+              {cartCount > 0 && (
+                <span className="cart-badge">{cartCount}</span>
+              )}
           </Link>
         </div>
       </div>
@@ -92,8 +95,11 @@ function Navbar() {
                 <User size={24} color="black" />
               </Link>
             )}
-          <Link to="/kundvagn" className="icon-button">
-            <ShoppingCart size={24} color="black" />
+          <Link to="/kundvagn" className="icon-button cart-wrapper">
+          <ShoppingCart size={24} color="black" />
+              {cartCount > 0 && (
+                <span className="cart-badge">{cartCount}</span>
+              )}
           </Link>
         </div>
       </div>

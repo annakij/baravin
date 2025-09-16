@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useOutletContext } from "react-router-dom";
 import { useAuth } from "../context/authContext";
 import api from "../api/axiosInstance";
 import { useEffect, useState } from "react";
@@ -6,6 +6,7 @@ import {ShoppingCart} from "lucide-react";
 import "./RegionPage.css";
 
 function RegionDetailPage() {
+  const { setCartCount } = useOutletContext();
   const location = useLocation();
   const { user } = useAuth();
   const regionFromState = location.state;
@@ -41,11 +42,11 @@ function RegionDetailPage() {
     }
 
     try {
-      await api.put("/cart", {boxId} ); // skicka med boxId
-      alert("Produkten lades till i kundvagnen!");
+      await api.put(`/cart?boxId=${boxId}`);
+      setCartCount(prev => prev + 1);
     } catch (err) {
       console.error(err);
-      alert("Kunde inte lägga till produkten i kundvagnen.");
+      setCartCount(prev => prev + 1);
     }
   };
 
@@ -60,25 +61,27 @@ function RegionDetailPage() {
   return (
     <>
     <div className="region-details">
-      <h1>{region.name}</h1>
-      <p>{region.description}</p>
+      <div>
+          <h1>{region.name}</h1>
+          <p>{region.description}</p>
 
-      {region.wineries?.map((winery, wIndex) => (
-        <div key={wIndex} className="winery-section">
-        <div className="wineboxes-container">
-          {allWineBoxes.map((box, index) => (
-            <div key={index} className="winebox-card">
+      
+        <div className="winery-section">
+          <div className="wineboxes-container">
+            {allWineBoxes.map((box, index) => (
+              <div key={index} className="winebox-card">
               <div className="winebox-image">
-              <img 
-                src={`${process.env.PUBLIC_URL}/images/regions/${region.name}.png`} 
-                alt={region.name} 
-              />
+                <img
+                  src={`/images/regions/${region.name}.png`}
+                  alt={region.name}
+                />
               </div>
               <div className="winebox-content">
-                <h3>{box.name}</h3>
-                <p>{box.description}</p>
-                <p><strong>Pris:</strong> {box.price} kr</p>
-                <p><em>Från: {box.wineryName}</em></p>
+                <div className="winebox-info">
+                  <h3>{box.name}</h3>
+                  <p>{box.description}</p>
+                  <p><strong>Pris:</strong> {box.price} kr</p>
+                </div>
                 <div className="winebox-buttons">
                   <button onClick={() => setSelectedBox(box)}>Detaljer</button>
                   <button onClick={() => handleAddToCart(box.id)}>
@@ -87,11 +90,11 @@ function RegionDetailPage() {
                 </div>
               </div>
             </div>
-          ))}
+            
+            ))}
+          </div>
         </div>
-        </div>
-      ))}
-
+      
       {/* MODAL WINEBOX DETAILS */}
       {selectedBox && (
         <div className="modal-overlay" onClick={() => setSelectedBox(null)}>
@@ -118,6 +121,8 @@ function RegionDetailPage() {
           </div>
         </div>
       )}
+
+      </div>
       </div>
     </>
   );

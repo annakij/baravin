@@ -41,14 +41,6 @@ function ConfirmDeleteAccount({ isOpen, onClose }) {
           <form onSubmit={handleSubmit}>
             <div className="confirm-header">
               <h4 id="confirm-delete-title">Är du säker?</h4>
-              <a
-                type="button"
-                className="confirm-close"
-                aria-label="Stäng"
-                onClick={onClose}
-              >
-                ✕
-              </a>
             </div>
     
             <p className="confirm-text">

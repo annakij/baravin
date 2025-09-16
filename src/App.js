@@ -16,8 +16,16 @@ import CookieBanner from './components/CookieBanner';
 import Cart from './components/Cart';
 import AdminLayout from './components/admin/AdminLayout';
 import AdminPanel from './pages/admin/AdminPanel';
+import Checkout from './components/Checkout';
+import Orders from './pages/admin/Orders';
+import Products from './pages/admin/Products';
+import Customers from './pages/admin/Customers';
+import Reports from './pages/admin/Statistics';
+import Discounts from './pages/admin/Discounts';
+import Shipping from './pages/admin/Shipping';
 
 function App() {
+  
   return (
     <AuthProvider>
         <Routes>
@@ -34,6 +42,7 @@ function App() {
           <Route path="/authenticate/loggain" element={<AuthenticatePage />} />
           <Route path="/authenticate/registrera" element={<AuthenticatePage />} />
           <Route path="/kundvagn" element={<Cart />} />
+          <Route path="/kassa" element={<Checkout />} />
         </Route>
 
         {/* Pages without default navbar/ footer */}
@@ -41,13 +50,12 @@ function App() {
         <Route path="/restaurang" element={<RestaurantPage />} />
         <Route element={<AdminLayout />}>
           <Route path="/admin" element={<AdminPanel />} />
-          {/* <Route path="/admin/ordrar" element={<Orders />} />
+          <Route path="/admin/ordrar" element={<Orders />} />
           <Route path="/admin/produkter" element={<Products />} />
           <Route path="/admin/kunder" element={<Customers />} />
           <Route path="/admin/rapporter" element={<Reports />} />
           <Route path="/admin/rabatter" element={<Discounts />} />
           <Route path="/admin/frakthantering" element={<Shipping />} />
-          <Route path="/admin/vinmassor" element={<WinefairsAdmin />} /> */}
         </Route>
       </Routes>
       <CookieBanner />

@@ -32,25 +32,25 @@ function AdminLayout() {
           <Link to="/admin" className="nav-item">
             <LayoutDashboard size={20}/> {isOpen && "Hem"}
           </Link>
-          <Link to="/admin/orders" className="nav-item">
+          <Link to="/admin/ordrar" className="nav-item">
             <ShoppingCart size={20}/> {isOpen && "Ordrar"}
           </Link>
-          <Link to="/admin/products" className="nav-item">
+          <Link to="/admin/produkter" className="nav-item">
             <Package size={20}/> {isOpen && "Produkter"}
           </Link>
-          <Link to="/admin/customers" className="nav-item">
+          <Link to="/admin/kunder" className="nav-item">
             <Users size={20}/> {isOpen && "Kunder"}
           </Link>
-          <Link to="/admin/reports" className="nav-item">
+          <Link to="/admin/rapporter" className="nav-item">
             <BarChart2 size={20}/> {isOpen && "Rapporter"}
           </Link>
-          <Link to="/admin/discounts" className="nav-item">
+          <Link to="/admin/rabatter" className="nav-item">
             <Percent size={20}/> {isOpen && "Rabatter"}
           </Link>
-          <Link to="/admin/shipping" className="nav-item">
+          <Link to="/admin/frakthantering" className="nav-item">
             <Truck size={20}/> {isOpen && "Frakthantering"}
           </Link>
-          <Link to="/admin/winefairs" className="nav-item">
+          <Link to="/admin/vinmassor" className="nav-item">
             <Wine size={20}/> {isOpen && "Vinmässor"}
           </Link>
         </nav>

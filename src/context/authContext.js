@@ -34,6 +34,7 @@ export const AuthProvider = ({ children }) => {
 
     Cookies.set("jwtToken", userData.jwtToken, {expires:1, sameSite: 'Strict', secure: true});
     Cookies.set("refreshToken", userData.refreshToken, {expires:7, sameSite: 'Strict', secure: true});
+    Cookies.set("role", userData.role, {expires:1, sameSite: 'Strict', secure: true});
 
     api.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`;
     setUser(userInfo || userData);
@@ -42,6 +43,7 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     Cookies.remove("jwtToken");
     Cookies.remove("refreshToken");
+    Cookies.remove("role");
     setUser(null);
     window.location.href = "/privat";
   };
