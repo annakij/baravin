@@ -1,0 +1,96 @@
+.products-container {
+  padding: 2rem;
+  padding-bottom: 60px;
+  background: #f8f6f3;
+}
+
+.products-header {
+  margin-bottom: 2rem;
+}
+
+.tabs-list {
+  display: flex;
+  gap: 24px;
+  border-bottom: 2px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.tab-trigger {
+  padding: 8px 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #666;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.tab-trigger:hover {
+  color: #000;
+  background-color: #b8b1b1;
+}
+
+.tab-trigger-active {
+  color: #000;
+  border-bottom: 2px solid #000;
+}
+
+.tabs-content {
+  margin-top: 16px;
+}
+
+.tab-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.modal {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.modal label {
+  display: block;
+  font-size: 14px;
+  margin: 8px 0 4px;
+}
+
+.modal input,
+.modal textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.modal textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.modal-actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+.cancel-btn,
+.save-btn {
+  padding: 0.5rem 1.5rem;
+}

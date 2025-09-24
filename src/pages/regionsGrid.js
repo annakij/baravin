@@ -30,7 +30,6 @@ function RegionsGridPage() {
   if (error) return <p>Något gick fel: {error}</p>;
 
   return (
-    <div className="app-container">
       <main className="main-content">
         <div className="regions-grid">
           {regions.map((region, index) => (
@@ -39,10 +38,13 @@ function RegionsGridPage() {
               className="region-card"
               onClick={() => navigate(`/region/${index}`, { state: region })}
             >
-              <img 
-                src={`${process.env.PUBLIC_URL}/images/regions/${region.name}.png`} 
-                alt={region.name} 
-              />
+              <img
+              src={`${process.env.PUBLIC_URL}/images/regions/${region?.name}.png`}
+              alt={region?.name || "Valle"}
+              onError={(e) => {
+                e.currentTarget.src = `${process.env.PUBLIC_URL}/images/regions/Valle.png`;
+              }}
+            />
 
               <div className="region-content">
                 <h2 className="region-title">{region.name}</h2>
@@ -53,7 +55,6 @@ function RegionsGridPage() {
           ))}
         </div>
       </main>
-    </div>
   );
 }
 

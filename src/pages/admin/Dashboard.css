@@ -1,0 +1,17 @@
+.admin-dashboard {
+  background: #f8f6f3;
+  padding: 2rem;
+}
+
+.dashboard-bottom {
+  display: row;
+}
+
+.subtitle {
+  font-size: 1rem;
+}
+
+h1,
+h3 {
+  color: #661a26;
+}

@@ -78,7 +78,7 @@ function Navbar( { cartCount } ) {
 
           {/* Visa Admin-länk endast om rollen är Admin */}
           {user && user.role === "0" && (
-            <li><Link to="/admin">Adminpanel</Link></li>
+            <li><Link to="/admin/hem">Adminpanel</Link></li>
           )}
         </ul>
 
@@ -114,7 +114,7 @@ function Navbar( { cartCount } ) {
             <li onClick={() => setMenuOpen(false)}><Link to="/privat/instruktioner">Hur fungerar det?</Link></li>
 
             {user && user.role === "0" && (
-              <li onClick={() => setMenuOpen(false)}><Link to="/admin">Adminpanel</Link></li>
+              <li onClick={() => setMenuOpen(false)}><Link to="/admin/hem">Adminpanel</Link></li>
             )}
 
             {user ? (

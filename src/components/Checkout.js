@@ -96,23 +96,23 @@ function Checkout() {
           <span>Inkluderad</span>
         </div>
 
-        {/* Rabattkod */}
-        {cart.discounts?.length > 0 ? (
-        <div>
-          <div className="summary-row discount">
-            <span>Rabattkod:</span>
-            <span>-{cart.discounts.reduce((sum, d) => sum + d.amount, 0)} kr</span>
-          </div>
+        {/* Discount Row */}
+        {cart.discount ? (
+          <div>
+            <div className="summary-row discount">
+              <span>Rabattkod:</span>
+              <span>-{cart.discount.amount} kr</span>
+            </div>
             <div className="discount-tag">
-              <span>{cart.discounts[0].code}</span>
+              <span>{cart.discount.code}</span>
               <a
                 className="remove-discount"
-                onClick={() => handleRemoveDiscount(cart.discounts[0].code)}
+                onClick={() => handleRemoveDiscount(cart.discount.code)}
               >
                 ✕
               </a>
             </div>
-        </div>
+          </div>
         ) : (
           <div className="discount-input-row">
             <input
@@ -121,7 +121,7 @@ function Checkout() {
               value={discountCode}
               onChange={(e) => {
                 setDiscountCode(e.target.value);
-                setError(""); // rensa felmeddelande när man skriver nytt
+                setError("");
               }}
             />
             <button onClick={handleApplyDiscount}>Lägg till</button>

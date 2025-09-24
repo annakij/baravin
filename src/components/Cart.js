@@ -126,12 +126,12 @@ function Cart () {
             <span>Frakt:</span>
             <span>Inkluderat</span>
           </div>
-          {cart.discounts?.length > 0 && (
+          {cart.discount && (
             <div className="summary-row discount">
               <span>Rabatt:</span>
               <span>
                 -
-                {cart.discounts.reduce((sum, d) => sum + d.amount, 0)} kr
+                {cart.discount.amount} kr
               </span>
             </div>
           )}

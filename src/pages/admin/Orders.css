@@ -1,0 +1,56 @@
+.order-table-container {
+  overflow-x: auto;
+}
+
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.order-table th,
+.order-table td {
+  padding: 0.8rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
+  color: #5a1a1a;
+}
+
+.order-table th {
+  background: #fcfbf9;
+}
+
+.order-card {
+  background: #fcfbf9;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.order-card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #5a1a1a;
+}
+
+.order-card-body p {
+  margin: 0.2rem 0;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* Visa tabellen på desktop, kort på mobil */
+@media (max-width: 768px) {
+  .order-table-container {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .order-cards {
+    display: none;
+  }
+}

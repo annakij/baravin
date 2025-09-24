@@ -15,7 +15,7 @@ import TermsConditions from './pages/TermsConditions';
 import CookieBanner from './components/CookieBanner';
 import Cart from './components/Cart';
 import AdminLayout from './components/admin/AdminLayout';
-import AdminPanel from './pages/admin/AdminPanel';
+import Dashboard from './pages/admin/Dashboard';
 import Checkout from './components/Checkout';
 import Orders from './pages/admin/Orders';
 import Products from './pages/admin/Products';
@@ -48,8 +48,9 @@ function App() {
         {/* Pages without default navbar/ footer */}
         <Route path="/" element={<StartPage />} />
         <Route path="/restaurang" element={<RestaurantPage />} />
+
         <Route element={<AdminLayout />}>
-          <Route path="/admin" element={<AdminPanel />} />
+          <Route path="/admin/hem" element={<Dashboard />} />
           <Route path="/admin/ordrar" element={<Orders />} />
           <Route path="/admin/produkter" element={<Products />} />
           <Route path="/admin/kunder" element={<Customers />} />
@@ -57,6 +58,7 @@ function App() {
           <Route path="/admin/rabatter" element={<Discounts />} />
           <Route path="/admin/frakthantering" element={<Shipping />} />
         </Route>
+        
       </Routes>
       <CookieBanner />
     </AuthProvider>
