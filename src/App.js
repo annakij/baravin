@@ -1,4 +1,3 @@
-import './App.css';
 import { Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./context/authContext";
 import RegionsGridPage from "./pages/RegionsGrid";
@@ -23,6 +22,8 @@ import Customers from './pages/admin/Customers';
 import Reports from './pages/admin/Statistics';
 import Discounts from './pages/admin/Discounts';
 import Shipping from './pages/admin/Shipping';
+import WineFairs from './pages/admin/WineFairs';
+import MailManagement from './pages/admin/MailManagement.js';
 
 function App() {
   
@@ -57,6 +58,8 @@ function App() {
           <Route path="/admin/rapporter" element={<Reports />} />
           <Route path="/admin/rabatter" element={<Discounts />} />
           <Route path="/admin/frakthantering" element={<Shipping />} />
+          <Route path="/admin/vinmassor" element={<WineFairs />} />
+          <Route path="/admin/nyhetsbrev" element={<MailManagement />} />
         </Route>
         
       </Routes>

@@ -8,16 +8,15 @@ function TopProducts() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await api.get("/orders/get-all"); // eller vilken endpoint du har
+        const res = await api.get("/orders/get-all");
         const orders = res.data;
 
-        // 1. Platta ut alla items från alla ordrar
         const allItems = orders.flatMap(order => order.items || []);
 
-        // 2. Räkna antal sales per produktnamn
+        // Calculate top sales
         const salesMap = {};
         allItems.forEach(item => {
-          const key = item.name; // använder namn som nyckel
+          const key = item.name; // name as key
           if (!salesMap[key]) {
             salesMap[key] = {
               name: item.name,
@@ -28,10 +27,10 @@ function TopProducts() {
           salesMap[key].sales += item.quantity;
         });
 
-        // 3. Gör om till array och sortera
+        // Put in array and sort
         const sorted = Object.values(salesMap).sort((a, b) => b.sales - a.sales);
 
-        // 4. Ta topp 5
+        // Top 5
         setTopProducts(sorted.slice(0, 5));
       } catch (err) {
         console.error("Kunde inte hämta ordrar:", err);

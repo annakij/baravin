@@ -1,10 +1,14 @@
 import "./DiscountCards.css";
 
-function DiscountCards({ discount }) {
+function DiscountCards({ discount, onToggle }) {
   const isValid = discount.isValid;
 
   return (
-    <div className={`discount-card ${isValid ? "valid" : "invalid"}`}>
+    <div
+      className={`discount-card ${isValid ? "valid" : "invalid"}`}
+      onClick={() => onToggle(discount.id)}
+      style={{ cursor: "pointer" }}
+    >
       <div className="discount-header">
         <span className="discount-code">{discount.code}</span>
       </div>

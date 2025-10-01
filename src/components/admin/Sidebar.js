@@ -1,9 +1,7 @@
-// src/components/Sidebar.jsx
-
 import { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { LayoutDashboard, ShoppingCart, Package, Users, BarChart2,
-  Percent, Truck, Wine, ArrowLeftFromLine, X, Menu } from "lucide-react";
+  Percent, Truck, Wine, X, Menu, Mail} from "lucide-react";
 import "./AdminLayout.css";
 
 function Sidebar() {
@@ -64,6 +62,8 @@ function Sidebar() {
           </Link>
           <Link to="/admin/vinmassor" className="nav-item">
             <Wine size={20} /> {isOpen && "Vinmässor"}
+          </Link><Link to="/admin/nyhetsbrev" className="nav-item">
+            <Mail size={20} /> {isOpen && "Nyhetsbrev"}
           </Link>
         </nav>
       </aside>

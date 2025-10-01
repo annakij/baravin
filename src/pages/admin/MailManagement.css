@@ -1,0 +1,70 @@
+/* Topbar */
+.mail-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mail-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-secondary {
+  border: 1px solid #ccc;
+  color: #333;
+}
+
+.btn-primary {
+  background: #5c1a1a;
+  color: #fff;
+}
+
+/* Tabs */
+.mail-tabs {
+  display: flex;
+  gap: 24px;
+  border-bottom: 2px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.mail-tab {
+  padding: 8px 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #666;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.mail-tab:hover {
+  color: #000;
+  background-color: #b8b1b1;
+}
+
+.mail-tab.active {
+  border-bottom: 2px solid #000;
+  color: #000;
+}
+
+/* Content */
+.mail-content {
+  padding: 24px;
+}
+
+@media (max-width: 1024px) {
+  .mail-content {
+    padding: 0;
+  }
+}
