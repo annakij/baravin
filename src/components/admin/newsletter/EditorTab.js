@@ -87,13 +87,13 @@ function EditorTab({ blocks, setBlocks, subject,
         const updated = [...saved, newTemplate];
         localStorage.setItem("newsletterTemplates", JSON.stringify(updated));
         alert("Ny mall sparad!");
-        setLoadedTemplateName(templateName); // mark as "active"
+        setLoadedTemplateName(templateName);
       }
     };
   
     return (
       <div className="editor-grid">
-        {/* Left column: Add Blocks */}
+        {/* Left columns*/}
         <div className="editor-sidebar">
           <h3 className="sidebar-title">Lägg till block</h3>
           <button onClick={() => addBlock("text")} className="block-btn">
@@ -138,11 +138,10 @@ function EditorTab({ blocks, setBlocks, subject,
         </div>
         </div>
   
-        {/* Middle column: Preview */}
+        {/* Middle columns*/}
         <div className="editor-preview">
           <h3 className="preview-title">Förhandsgranskning</h3>
 
-          {/* Subject input */}
             <div className="subject-input">
             <label>Ämne:</label>
             <input
@@ -155,7 +154,6 @@ function EditorTab({ blocks, setBlocks, subject,
             </div>
   
           {/* Global toolbar */}
-
         <GlobalToolbar editor={activeEditor} />
   
           <div className="preview-box">
@@ -182,7 +180,7 @@ function EditorTab({ blocks, setBlocks, subject,
           </div>
         </div>
   
-        {/* Right column: Block Properties */}
+        {/* Right columns*/}
         <div className="editor-properties">
           <h3 className="properties-title">Blockegenskaper</h3>
           {activeBlock ? (
@@ -195,7 +193,6 @@ function EditorTab({ blocks, setBlocks, subject,
     );
   }
   
-  // --- Block rendering ---
   function DraggableBlock({
     block,
     index,

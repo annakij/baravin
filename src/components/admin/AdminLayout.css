@@ -1,3 +1,23 @@
+/* Reset existing styles first */
+.admin-layout {
+  min-height: 100vh;
+  display: flex;
+}
+
+.admin-wrapper {
+  flex: 1;
+  margin-left: 300px;
+  transition: margin-left 0.3s ease;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Prevent double scrollbars */
+}
+
+.admin-wrapper.sidebar-collapsed {
+  margin-left: 70px;
+}
+
 /* Layout container */
 .admin-container {
   display: flex;
@@ -6,19 +26,18 @@
   min-height: 100vh;
 }
 
-.admin-content {
-  background: #f8f6f3;
-  padding: 3rem;
-}
-
 .admin-topbar {
+  position: sticky;
   display: flex;
-  align-items: center;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  top: 0;
+  z-index: 50;
   background: #f1efef;
-  border-bottom: 1px solid #e5e7eb;
   padding: 0.5rem 1.5rem;
-  margin-left: 300px;
+  border-bottom: 1px solid #e5e7eb;
+  margin-left: 0; /* Remove the margin here */
 }
 
 .back-to-site {
@@ -108,6 +127,7 @@
   align-items: center;
   gap: 1rem;
   padding: 1rem;
+  margin-left: 8px;
   color: #eceaea;
   text-decoration: none;
   transition: background 0.2s ease;
@@ -122,10 +142,11 @@
 /* Main content area */
 .admin-content {
   flex: 1;
-  margin-left: 300px;
-  transition: margin-left 0.3s ease;
-  width: 100%;
+  padding: 2rem;
+  background: #f8f6f3;
   overflow-y: auto;
+  height: calc(100vh - 60px); /* Subtract topbar height */
+  max-width: 100%;
 }
 
 /* Adjust margin when sidebar is collapsed */
@@ -157,6 +178,7 @@
     margin-left: 0;
   }
   .sidebar {
+    position: fixed;
     left: -300px;
   }
   .sidebar.open {
@@ -168,8 +190,47 @@
   .sidebar.collapsed + .admin-content,
   .admin-content {
     margin-left: 0;
+    padding: 1rem;
   }
   .mobile-toggle {
     display: block;
+  }
+  .admin-wrapper {
+    margin-left: 0;
+  }
+
+  .admin-wrapper.sidebar-collapsed {
+    margin-left: 0;
+  }
+
+  .admin-modal-overlay {
+    margin-left: 0;
+  }
+}
+
+/* Add new styles */
+.admin-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1500;
+  margin-left: 300px;
+  transition: margin-left 0.3s ease;
+}
+
+/* When sidebar is collapsed */
+.admin-wrapper.sidebar-collapsed .admin-modal-overlay {
+  margin-left: 70px;
+}
+
+/* Media query for mobile */
+@media (max-width: 768px) {
+  .admin-modal-overlay,
+  .admin-wrapper.sidebar-collapsed .admin-modal-overlay {
+    margin-left: 0;
+    width: 100%;
   }
 }

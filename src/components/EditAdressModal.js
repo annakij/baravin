@@ -45,7 +45,7 @@ function EditAddressModal({ isOpen, onClose, currentProfile, onSave }) {
 
     try {
       const response = await api.put("/customer/profile", formData);
-      onSave(response.data); // skicka tillbaka uppdaterad profil
+      onSave(response.data);
       onClose();
     } catch (err) {
       console.error(err);
@@ -58,7 +58,7 @@ function EditAddressModal({ isOpen, onClose, currentProfile, onSave }) {
   if (!isOpen) return null;
 
   return (
-    <div className="modal-overlay">
+    <div className="modal-overlay" onClick={onClose}>
       <div className="modal">
         <h2>Redigera Profil</h2>
         <form onSubmit={handleSubmit} className="form-container">

@@ -1,0 +1,31 @@
+/* Create this new shared CSS file for admin pages */
+.admin-page-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.admin-page-header {
+  margin-bottom: 1rem;
+}
+
+.admin-page-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 1rem; /* Prevent content from touching the scrollbar */
+}
+
+/* Shared table styles */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Shared modal styles */
+.admin-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}

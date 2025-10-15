@@ -41,54 +41,58 @@ function MailManagement() {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="mail-container">
-        {/* Top bar */}
-        <div className="mail-topbar">
-          <h1>Nyhetsbrev utskick</h1>
-          <div className="mail-actions">
-            <button className="btn btn-primary" onClick={handleSend}>Skicka nyhetsbrev</button>
+      <div className="admin-page-container">
+        <div className="admin-page-header">
+          <div className="mail-topbar">
+            <h1>Nyhetsbrev utskick</h1>
+            <div className="mail-actions">
+              <button className="btn btn-primary" onClick={handleSend}>
+                Skicka nyhetsbrev
+              </button>
+            </div>
+          </div>
+          <div className="mail-tabs">
+            {["Skapa/ redigera", "Mallar", "Mottagare"].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`mail-tab ${activeTab === tab ? "active" : ""}`}
+              >
+                {tab}
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Tabs */}
-        <div className="mail-tabs">
-        {["Skapa/ redigera", "Mallar", "Mottagare"].map((tab) => (
-        <button
-            key={tab}
-            onClick={() => setActiveTab(tab)}
-            className={`mail-tab ${activeTab === tab ? "active" : ""}`}
-        >
-            {tab}
-        </button>
-        ))}
-        </div>
-
-        {/* Tab Content */}
-        <div className="mail-content">
-        {activeTab === "Skapa/ redigera" && (
-        <EditorTab blocks={blocks} 
-                    setBlocks={setBlocks} 
-                    loadedTemplate={templateToLoad}
-                    subject={subject}
-                    setSubject={setSubject} />
-        )}
-        {activeTab === "Mallar" && (
-        <TemplatesTab
-            onLoadTemplate={(t) => {
-            setBlocks(t.blocks || []);
-            setActiveTab("Skapa/ redigera");
-            setTemplateToLoad(t);
-            }}
-        />
-        )}
-        {activeTab === "Mottagare" && (
-            <RecipientsTab
-              recipients={recipients}
-              setRecipients={setRecipients}
-              sendToAll={sendToAll}
-              setSendToAll={setSendToAll}
-            />
-          )}
+        <div className="admin-page-content">
+          <div className="mail-content">
+            {activeTab === "Skapa/ redigera" && (
+              <EditorTab
+                blocks={blocks}
+                setBlocks={setBlocks}
+                loadedTemplate={templateToLoad}
+                subject={subject}
+                setSubject={setSubject}
+              />
+            )}
+            {activeTab === "Mallar" && (
+              <TemplatesTab
+                onLoadTemplate={(t) => {
+                  setBlocks(t.blocks || []);
+                  setActiveTab("Skapa/ redigera");
+                  setTemplateToLoad(t);
+                }}
+              />
+            )}
+            {activeTab === "Mottagare" && (
+              <RecipientsTab
+                recipients={recipients}
+                setRecipients={setRecipients}
+                sendToAll={sendToAll}
+                setSendToAll={setSendToAll}
+              />
+            )}
+          </div>
         </div>
       </div>
     </DndProvider>

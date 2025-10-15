@@ -11,8 +11,10 @@ const [cartCount, setCartCount] = useState(0);
   return (
     <>
       <Navbar cartCount={cartCount} />
+      <div className="website-content">
         <Outlet context={{setCartCount}} />
         <WhatsAppChat />
+      </div>
       <Footer />
     </>
   );
