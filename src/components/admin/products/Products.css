@@ -1,3 +1,7 @@
+.admin-information-tab {
+  padding: 1rem 2rem;
+}
+
 .products-topbar {
   display: flex;
   flex-direction: row;
@@ -7,7 +11,11 @@
 .products-topbar-icon {
   cursor: pointer;
   font-size: 32px;
-  margin-right: 1rem;
+  padding: 0.1rem 0.1rem;
+  width: 50px;
+  border: solid 1px #9c9191;
+  border-radius: 5px;
+  background-color: transparent;
 }
 
 .winery-edit {
@@ -49,6 +57,11 @@
   justify-content: space-between;
 }
 
+.winebox-card-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
 .admin-winebox-name {
   font-weight: bold;
   color: #5a1a1a;
@@ -86,11 +99,24 @@
 }
 
 mark {
-  background: #ed63639d; /* snygg gul (tailwind yellow-400) */
+  background: #ed63639d;
+}
+
+.admin-bulk-edit-btn {
+  background-color: #661a26;
+  color: white;
+  border: none;
+  width: 300px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sub {
+  color: #171717;
 }
 
 @media (max-width: 768px) {
   .admin-bottles-grid {
-    grid-template-columns: 1fr; /* 1 flaska per rad */
+    grid-template-columns: 1fr;
   }
 }

@@ -15,7 +15,7 @@ function AddRegionModal({ onClose, onSave }) {
     address: "",
     email: "",
     phone: "",
-    videoId: "",
+    videoId: "4Q2ktdGlEk0",
   });
 
   const handleAddWinery = () => {
@@ -29,7 +29,7 @@ function AddRegionModal({ onClose, onSave }) {
       address: "",
       email: "",
       phone: "",
-      videoId: "",
+      videoId: "4Q2ktdGlEk0",
     });
   };
 
@@ -46,13 +46,14 @@ function AddRegionModal({ onClose, onSave }) {
   };
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
+    <div className="admin-modal-overlay" onClick={onClose}>
       <div className="modal add-region-modal" onClick={(e) => e.stopPropagation()}>
         <h3>Lägg till ny region</h3>
+        <p>* fält är obligatoriska</p>
 
         {/* Region Fields */}
         <label htmlFor="region-name">
-          Namn:
+          Namn*
           <input
             id="region-name"
             name="regionName"
@@ -63,7 +64,7 @@ function AddRegionModal({ onClose, onSave }) {
         </label>
 
         <label htmlFor="region-description">
-          Beskrivning:
+          Beskrivning*
           <textarea
             id="region-description"
             name="regionDescription"
@@ -75,7 +76,7 @@ function AddRegionModal({ onClose, onSave }) {
         <hr />
 
         {/* Wineries */}
-        <h4>Vingårdar</h4>
+        <h4>Vingårdar (frivilligt)</h4>
         {region.wineries.length > 0 && (
           <ul className="winery-list">
             {region.wineries.map((w, i) => (

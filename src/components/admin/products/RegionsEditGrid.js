@@ -1,166 +1,206 @@
 import { useState, useEffect } from "react";
-import api from "../../../api/axiosInstance.js";
-import Loading from "../Loading.js";
 import { Plus } from "lucide-react";
 import AddRegionModal from "../../../components/admin/products/AddRegionModal.js";
+import Loading from "../Loading.js";
+import api from "../../../api/axiosInstance.js";
 
-function RegionsEditGrid() {
-  const [regions, setRegions] = useState([]);
+function RegionsEditGrid({ regions, searchTerm, onRefresh }) {
   const [filteredRegions, setFilteredRegions] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [editModal, setEditModal] = useState(false);
   const [addModal, setAddModal] = useState(false);
   const [currentRegion, setCurrentRegion] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
+  // 🔎 Filtrering
   useEffect(() => {
-    const fetchRegions = async () => {
-      try {
-        const res = await api.get("/regions/admin");
-        setRegions(res.data || []);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchRegions();
-  }, []);
-
-  // Search bar
-  useEffect(() => {
-    const term = searchTerm.toLowerCase();
-
-    const filtered = regions.filter(
-      (r) =>
-        r.name?.toLowerCase().includes(term) ||
-        r.description?.toLowerCase().includes(term)
+    if (!regions) return;
+    const term = searchTerm?.toLowerCase() || "";
+    setFilteredRegions(
+      regions.filter(
+        (r) =>
+          r.name?.toLowerCase().includes(term) ||
+          r.description?.toLowerCase().includes(term)
+      )
     );
+  }, [regions, searchTerm]);
 
-    setFilteredRegions(filtered);
-  }, [searchTerm, regions]);
-
-  const openModal = (region) => {
-    setCurrentRegion(region);
+  // 🧩 Modal hantering
+  const openEditModal = (region) => {
+    setCurrentRegion({ ...region });
+    setError(null);
     setEditModal(true);
   };
 
-  const closeModal = () => {
+  const closeModals = () => {
     setEditModal(false);
+    setAddModal(false);
     setCurrentRegion(null);
+    setError(null);
   };
 
+  // 💾 Spara uppdaterad region
   const handleSave = async () => {
+    if (!currentRegion?.id) return setError("Ingen giltig region vald.");
+    if (!currentRegion.name?.trim() || !currentRegion.description?.trim())
+      return setError("Namn och beskrivning krävs.");
+
     try {
-      await api.put("/region", currentRegion);
+      setLoading(true);
+      await api.put(`/regions/${currentRegion.id}`, {
+        name: currentRegion.name,
+        description: currentRegion.description,
+      });
 
-      // Update State
-      setRegions((prev) =>
-        prev.map((r) => (r.id === currentRegion.id ? currentRegion : r))
-      );
-
-      closeModal();
+      await onRefresh(); // 🟢 Uppdatera hela datan i Products.js
+      closeModals();
     } catch (err) {
-      alert("Kunde inte spara regionen: " + err.message);
+      console.error("Kunde inte spara region:", err);
+      setError("Kunde inte spara regionen: " + err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
-  // Add new region + optional winery
+  // ❌ Ta bort region
+  const handleDelete = async () => {
+    if (
+      !window.confirm(
+        `Är du säker på att du vill ta bort regionen "${currentRegion.name}"?\nOm regionen har gårdar eller boxar tas de också bort.`
+      )
+    )
+      return;
+
+    try {
+      setLoading(true);
+      setError(null);
+
+      await api.delete(`/regions/${currentRegion.id}`);
+
+      await onRefresh(); // 🟢 Hämta ny data
+      closeModals();
+    } catch (err) {
+      if (err.response?.status === 409) {
+        setError(
+          "Vinboxar i denna region finns i ordrar. Gör istället regionen inaktiv och skapa en ny."
+        );
+      } else {
+        setError("Kunde inte ta bort regionen: " + err.message);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // ➕ Lägg till region
   const handleAddRegion = async (newRegion) => {
     try {
-      const res = await api.post("/regions", newRegion);
-
-      setRegions((prev) => [...prev, res.data]);
-
+      setLoading(true);
+      setError(null);
+      await api.post("/regions", newRegion);
+      await onRefresh(); // 🟢 Hämta uppdaterad lista
       setAddModal(false);
     } catch (err) {
-      alert("Kunde inte lägga till regionen: " + err.message);
+      console.error("Kunde inte lägga till region:", err);
+      setError("Kunde inte lägga till regionen: " + err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
-  if (loading) return <Loading />;
-  if (error) return <p>Något gick fel: {error}</p>;
-
+  // 🖼️ Render
   return (
     <>
+      {loading && <Loading />}
+
       <div className="products-topbar">
-        <input
-          type="text"
-          placeholder="Sök efter region..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="search-input"
-        />
-        <a className="products-topbar-icon" onClick={() => setAddModal(true)}>
+        <button
+          className="products-topbar-icon"
+          onClick={() => setAddModal(true)}
+          title="Lägg till ny region"
+        >
           <Plus />
-        </a>
+        </button>
       </div>
 
       <div className="regions-grid">
-        {filteredRegions.map((region) => (
-          <div
-            key={region.name}
-            className="region-card"
-            onClick={() => openModal(region)}
-          >
-            <img
-              src={`${process.env.PUBLIC_URL}/images/regions/${region?.name}.png`}
-              alt={region?.name || "Valle"}
-              onError={(e) => {
-                e.currentTarget.src = `${process.env.PUBLIC_URL}/images/regions/Valle.png`;
-              }}
-            />
-            <div className="region-content">
-              <h2 className="region-title">{region.name}</h2>
-              <p className="region-description">{region.description}</p>
-              <a className="region-button">Klicka för redigering</a>
+        {filteredRegions.length === 0 && !loading ? (
+          <p>Inga regioner hittades.</p>
+        ) : (
+          filteredRegions.map((region) => (
+            <div
+              key={region.id}
+              className="region-card"
+              onClick={() => openEditModal(region)}
+            >
+              <img
+                src={`${process.env.PUBLIC_URL}/images/regions/${region.name}.png`}
+                alt={region.name}
+                onError={(e) => {
+                  e.currentTarget.src = `${process.env.PUBLIC_URL}/images/regions/Valle.png`;
+                }}
+              />
+              <div className="region-content">
+                <h2 className="region-title">{region.name}</h2>
+                <p className="region-description">{region.description}</p>
+                <span className="region-button">Klicka för redigering</span>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
 
-      {/* Edit Region Modal */}
+      {/* ✏️ Redigera modal */}
       {editModal && currentRegion && (
-        <div className="modal-overlay" onClick={closeModal}>
+        <div className="admin-modal-overlay" onClick={closeModals}>
           <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <h3>{currentRegion.name}</h3>
+            <h3>Redigera region</h3>
+
             <label>
               Namn:
               <input
                 type="text"
-                value={currentRegion.name}
+                value={currentRegion.name || ""}
                 onChange={(e) =>
-                  setCurrentRegion({ ...currentRegion, name: e.target.value })
+                  setCurrentRegion((prev) => ({
+                    ...prev,
+                    name: e.target.value,
+                  }))
                 }
               />
             </label>
+
             <label>
               Beskrivning:
               <textarea
-                value={currentRegion.description}
+                value={currentRegion.description || ""}
                 onChange={(e) =>
-                  setCurrentRegion({
-                    ...currentRegion,
+                  setCurrentRegion((prev) => ({
+                    ...prev,
                     description: e.target.value,
-                  })
+                  }))
                 }
               />
             </label>
+
+            {error && (
+              <div className="modal-error">
+                <p>{error}</p>
+              </div>
+            )}
+
             <div className="modal-actions">
-              <button onClick={closeModal} className="cancel-btn">
-                Avbryt
+              <button onClick={handleDelete} className="btn-danger">
+                Ta bort
               </button>
-              <button onClick={handleSave} className="save-btn">
-                Spara
-              </button>
+              <button onClick={closeModals}>Avbryt</button>
+              <button onClick={handleSave}>Spara</button>
             </div>
           </div>
         </div>
       )}
 
-      {/* Add Region Modal */}
+      {/* ➕ Lägg till modal */}
       {addModal && (
         <AddRegionModal
           onClose={() => setAddModal(false)}
