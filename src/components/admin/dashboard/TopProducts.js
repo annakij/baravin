@@ -4,36 +4,48 @@ import "./Dashboard.css";
 
 function TopProducts() {
   const [topProducts, setTopProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchOrders = async () => {
       try {
         const res = await api.get("/orders/get-all");
-        const orders = res.data;
+        const allOrders = res.data || [];
 
-        const allItems = orders.flatMap(order => order.items || []);
+        // Take statistics from last 6 months
+        const sixMonthsAgo = new Date();
+        sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
 
-        // Calculate top sales
-        const salesMap = {};
-        allItems.forEach(item => {
-          const key = item.name; // name as key
-          if (!salesMap[key]) {
-            salesMap[key] = {
-              name: item.name,
-              price: item.price,
-              sales: 0,
-            };
-          }
-          salesMap[key].sales += item.quantity;
+        const recentOrders = allOrders.filter(
+          (o) => new Date(o.date) >= sixMonthsAgo
+        && o.statusId === 1);
+
+        const productCounts = {};
+
+        recentOrders.forEach((order) => {
+          order.items?.forEach((item) => {
+            if (!productCounts[item.name]) {
+              productCounts[item.name] = { 
+                name: item.name, 
+                quantity: 0,
+                price: item.price
+              };
+            }
+        
+            productCounts[item.name].quantity += item.quantity;
+          });
         });
+        
+        // Sort after most sold
+        const sorted = Object.values(productCounts)
+          .sort((a, b) => b.quantity - a.quantity)
+          .slice(0, 10);
 
-        // Put in array and sort
-        const sorted = Object.values(salesMap).sort((a, b) => b.sales - a.sales);
-
-        // Top 5
-        setTopProducts(sorted.slice(0, 5));
+        setTopProducts(sorted);
       } catch (err) {
-        console.error("Kunde inte hämta ordrar:", err);
+        console.error("Kunde inte hämta topprodukter:", err);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -42,7 +54,7 @@ function TopProducts() {
 
   return (
     <div className="top-products">
-      <h3>Top Products</h3>
+      <h3>Bästsäljare (6 mån)</h3>
       <ul>
         {topProducts.map((product, i) => (
           <li key={product.name}>
@@ -50,7 +62,7 @@ function TopProducts() {
               <span className="rank">{i + 1}</span>
               <div>
                 <p>{product.name}</p>
-                <p className="sub">{product.sales} sålda</p>
+                <p className="sub">{product.quantity} sålda</p>
               </div>
             </div>
             <div>

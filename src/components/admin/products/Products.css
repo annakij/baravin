@@ -11,7 +11,7 @@
 .products-topbar-icon {
   cursor: pointer;
   font-size: 32px;
-  padding: 0.1rem 0.1rem;
+  padding: 0 0.1rem;
   width: 50px;
   border: solid 1px #9c9191;
   border-radius: 5px;

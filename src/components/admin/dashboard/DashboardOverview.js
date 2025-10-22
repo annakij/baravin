@@ -46,7 +46,9 @@ function DashboardOverview() {
   const { total, available } = countWineBoxes();
 
   const calculateRevenue = () => {
-    return orders.reduce((sum, order) => sum + (order.total || 0), 0);
+    return orders
+    .filter(o => o.statusId === 1)
+    .reduce((sum, order) => sum + (order.total || 0), 0);
   };
 
 
@@ -66,7 +68,7 @@ function DashboardOverview() {
         />
       <DashboardCard
         title="Ordrar"
-        value={orders.length}
+        value={orders.filter(o => o.statusId === 1).length}
         color="blue"
         icon={<ShoppingCart />}
       />

@@ -1,5 +1,11 @@
 .dashboard-bottom {
-  display: row;
+  display: flex;
+  gap: 2rem;
+}
+
+.recent-orders,
+.top-products {
+  flex: 1;
 }
 
 .subtitle {
@@ -9,4 +15,10 @@
 h1,
 h3 {
   color: #661a26;
+}
+
+@media (max-width: 900px) {
+  .dashboard-bottom {
+    flex-direction: column;
+  }
 }

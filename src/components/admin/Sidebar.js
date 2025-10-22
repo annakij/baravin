@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { LayoutDashboard, ShoppingCart, Package, Users, BarChart2,
   Percent, Truck, Wine, X, Menu, Mail} from "lucide-react";
 import "./AdminLayout.css";
 
-function Sidebar() {
-  const [isOpen, setIsOpen] = useState(true);
+function Sidebar({ isOpen, setIsOpen }) {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -18,11 +17,10 @@ function Sidebar() {
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [setIsOpen]);
 
   return (
-    <div className="admin-container">
-      {/* Sidebar */}
+    <>
       <aside className={`sidebar ${isOpen ? "open" : "collapsed"}`}>
         <div className="sidebar-header">
           <a onClick={() => setIsOpen(true)}>
@@ -68,18 +66,12 @@ function Sidebar() {
         </nav>
       </aside>
 
-      {/* Hamburger Toggle - Mobile */}
       {!isOpen && isMobile && (
         <a className="mobile-toggle" onClick={() => setIsOpen(true)}>
           ☰
         </a>
       )}
-
-      {/* Main Content */}
-      <main className="admin-content">
-        <Outlet />
-      </main>
-    </div>
+    </>
   );
 }
 

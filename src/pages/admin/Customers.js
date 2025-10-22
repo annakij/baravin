@@ -43,53 +43,54 @@ function Customers() {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="admin-customer-container">
-      <div className="products-topbar">
-        <h1>Kundinformation</h1>
-        <input
-          type="text"
-          placeholder="Sök namn, e-post, mobil, stad..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="search-input"
-        />
+    <div className="admin-page-container">
+      <div className="admin-page-header">
+        <div className="products-topbar">
+          <h1>Kundinformation</h1>
+          <input
+            type="text"
+            placeholder="Sök namn, e-post, mobil, stad..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-input"
+          />
+        </div>
       </div>
 
-      {/* Desktop Table */}
-      <div className="customer-table-wrapper desktop-only">
-        {filteredProfiles.length === 0 ? (
-          <p>Inga kundprofiler matchade din sökning.</p>
-        ) : (
-          <table className="customer-table">
-            <thead>
-              <tr>
-                <th>Namn</th>
-                <th>E-post</th>
-                <th>Mobil</th>
-                <th>Adress</th>
-                <th>Postnummer</th>
-                <th>Stad</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredProfiles.map((p, index) => (
-                <tr key={`${p.id}-${index}`}>
-                  <td>{p.firstName} {p.lastName}</td>
-                  <td>{p.email}</td>
-                  <td>{p.mobile}</td>
-                  <td>{p.address1}{p.address2 ? `, ${p.address2}` : ''}</td>
-                  <td>{p.postalCode}</td>
-                  <td>{p.city}</td>
+      <div className="admin-page-content">
+        <div className="customer-table-wrapper desktop-only">
+          {filteredProfiles.length === 0 ? (
+            <p>Inga kundprofiler matchade din sökning.</p>
+          ) : (
+            <table className="customer-table">
+              <thead>
+                <tr>
+                  <th>Namn</th>
+                  <th>E-post</th>
+                  <th>Mobil</th>
+                  <th>Adress</th>
+                  <th>Postnummer</th>
+                  <th>Stad</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
-      </div>
-
-      {/* Mobile Cards */}
-      <div className="mobile-only">
-        <CustomerProfileCards profiles={filteredProfiles} />
+              </thead>
+              <tbody>
+                {filteredProfiles.map((p, index) => (
+                  <tr key={`${p.id}-${index}`}>
+                    <td>{p.firstName} {p.lastName}</td>
+                    <td>{p.email}</td>
+                    <td>{p.mobile}</td>
+                    <td>{p.address1}{p.address2 ? `, ${p.address2}` : ''}</td>
+                    <td>{p.postalCode}</td>
+                    <td>{p.city}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
+        <div className="mobile-only">
+          <CustomerProfileCards profiles={filteredProfiles} />
+        </div>
       </div>
     </div>
   );

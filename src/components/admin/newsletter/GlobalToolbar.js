@@ -35,7 +35,7 @@ import { AlignCenter, AlignLeft, AlignRight, Bold, Heading1, Heading2, Heading3,
         <button disabled={isDisabled} onClick={() => editor?.chain().focus().setTextAlign("right").run()}>
           <AlignRight />
         </button>
-        <button disabled={isDisabled} nClick={() => editor?.chain().focus().toggleHeading({ level: 1 }).run()}>
+        <button disabled={isDisabled} onClick={() => editor?.chain().focus().toggleHeading({ level: 1 }).run()}>
           <Heading1 />
         </button>
         <button disabled={isDisabled} onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()}>
