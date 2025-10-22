@@ -35,8 +35,8 @@ function DiscountForm({ onClose, onSave, editDiscount }) {
   };
 
   return (
-    <div className="modal-overlay">
-      <div className="modal">
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
           <h2>{editDiscount ? "Redigera rabatt" : "Ny rabatt"}</h2>
           <p>*fält är obligatoriska</p>
