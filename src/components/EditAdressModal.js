@@ -59,7 +59,7 @@ function EditAddressModal({ isOpen, onClose, currentProfile, onSave }) {
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal">
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
         <h2>Redigera Profil</h2>
         <form onSubmit={handleSubmit} className="form-container">
           <div className="form-group">

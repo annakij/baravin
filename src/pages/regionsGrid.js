@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import NewsletterBanner from "../components/NewsletterBanner.js";
 import api from "../api/axiosInstance.js";
+import Loading from "../components/admin/Loading";
 import "./RegionsGrid.css";
 
 // Displays a grid of wine regions fetched from the backend API
@@ -26,11 +28,12 @@ function RegionsGridPage() {
     fetchRegions();
   }, []);
 
-  if (loading) return <p>Laddar...</p>;
+  if (loading) return <Loading />;
   if (error) return <p>Något gick fel: {error}</p>;
 
   return (
       <main className="main-content">
+        <NewsletterBanner />
         <div className="regions-grid">
           {regions.map((region, index) => (
             <div

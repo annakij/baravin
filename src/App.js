@@ -19,11 +19,14 @@ import Checkout from './components/Checkout';
 import Orders from './pages/admin/Orders';
 import Products from './pages/admin/Products';
 import Customers from './pages/admin/Customers';
-import Reports from './pages/admin/Statistics';
+import Reports from './pages/admin/Reports';
 import Discounts from './pages/admin/Discounts';
 import Shipping from './pages/admin/Shipping';
 import WineFairs from './pages/admin/WineFairs';
 import MailManagement from './pages/admin/MailManagement.js';
+import RequestResetPassword from "./components/RequestResetPassword.js";
+import ResetPassword from "./components/ResetPassword.js";
+import About from "./pages/About.js";
 
 function App() {
   
@@ -36,12 +39,15 @@ function App() {
           <Route path="/privat/instruktioner" element={<InstructionsPage />} />
           <Route path="/event" element={<WinefairsPage />} />
           <Route path="/kontakt" element={<ContactPage />} />
+          <Route path="/historia" element={<About />} />
           <Route path="/villkor" element={<TermsConditions />} />
           <Route path="/anvandarsida" element={<UserPage />} />
           <Route path="/region/:id" element={<RegionPage />} />
           <Route path="/authenticate" element={<AuthenticatePage />} />
           <Route path="/authenticate/loggain" element={<AuthenticatePage />} />
           <Route path="/authenticate/registrera" element={<AuthenticatePage />} />
+          <Route path="/authenticate/request-reset" element={<RequestResetPassword />} />
+          <Route path="/authenticate/reset-password" element={<ResetPassword />} />
           <Route path="/kundvagn" element={<Cart />} />
           <Route path="/kassa" element={<Checkout />} />
         </Route>

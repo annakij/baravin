@@ -152,11 +152,13 @@ function TermsConditions() {
 <h3>Vår e-post policy</h3>
 <p>På detta sätt efterföljer vi GDPR gällande ostrukturerade data i e-post. Vi efterlever denna policy oavsett om det handlar om e-post som skickas internt eller externt. När vi mottagit och läst e-posten, bedömer vi alltid om uppgifterna ska bevaras och var det i så fall ska ske för att uppfylla de krav som gäller för just dessa uppgifter.</p>
 <p>Vi skickar aldrig känsliga personuppgifter i oskyddad e-post. Vi behandlar eller lagrar aldrig personuppgifter som är känsliga eller sekretessbelagda i vår e-post. Vi informerar löpande alla i vår organisation om reglerna och rutinerna kring hur vi behandlar personuppgifter. Du kan läsa hur vi behandlar personuppgifter i vår integritetspolicy.</p>
+<p>Genom att anmäla dig till vårt nyhetsbrev samtycker du till att ta emot e-postutskick från Bara Vin, som kan innehålla information om våra produkter, erbjudanden, evenemang och nyheter kopplade till vår verksamhet.
+Du kan när som helst avregistrera dig via länken längst ned i varje utskick.</p>
 
 <h3>Har du fler frågor?</h3>
 <p>Det är alltid enkelt att komma i kontakt med oss. Om du vill veta mer om vår integritetspolicy, eller nyttja dina rättigheter kring dina personuppgifter, så kontaktar du oss enklast via mail: <a className="link" href="mailto:info@baravin.nu">info@baravin.nu</a></p>
 
-<p><strong>Integritetspolicyn är senast uppdaterad:</strong> 2022-09-15.</p>
+<p>Integritetspolicyn är senast uppdaterad: 2022-09-15.</p>
 <p>Du finner alltid den senaste versionen av vår integritetspolicy här på vår webbplats. I det fall vi gör uppdateringar som är av avgörande art, så kommer du att få information kring detta på vår webbplats och/eller via mail.</p>
 
 

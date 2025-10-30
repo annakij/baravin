@@ -1,12 +1,14 @@
-/* ======= INSTRUCTIONS ========== */
-.instructions-page {
+/* ======= INSTRUCTIONS, ABOUT ========== */
+.instructions-page,
+.about-page {
   display: flex;
   flex-direction: column;
   padding: 20px;
   max-width: 800px;
   margin: 0 auto;
 }
-.instructions-page img {
+.instructions-page img,
+.about-page img {
   max-width: 50%;
   height: auto;
   align-self: center;
@@ -18,7 +20,6 @@
   display: block;
   text-align: center;
   padding: 20px;
-  min-height: 60vh;
   max-width: 600px;
   margin: 2rem auto;
 }
@@ -33,7 +34,6 @@
   display: block;
   text-align: left;
   padding: 20px;
-  min-height: 60vh;
   max-width: 800px;
   margin: 1rem auto;
 }

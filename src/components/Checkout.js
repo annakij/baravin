@@ -6,6 +6,7 @@ function Checkout() {
   const [cart, setCart] = useState(null);
   const [loading, setLoading] = useState(true);
   const [discountCode, setDiscountCode] = useState("");
+  const [processing, setProcessing] = useState(false);
   const [error, setError] = useState("");
 
   const fetchCart = async () => {
@@ -46,10 +47,27 @@ function Checkout() {
 
   const handleCheckout = async () => {
     try {
-        await api.post("/orders");
+      setProcessing(true);
+      setError("");
+
+      const res = await api.post("/orders");
+      const { token } = res.data;
+
+      if (!token) {
+        throw new Error("Saknar Swish-token i svaret");
+      }
+
+      // 🔹 För mobila enheter (öppnar Swish-appen direkt)
+      const swishUrl = `swish://paymentrequest?token=${token}`;
+
+      // Testa om Swish finns, annars fallback till webbläsarvisning (t.ex. QR-kod)
+      window.location.href = swishUrl;
 
     } catch (err) {
-        console.error("Checkout failed", err);
+      console.error("Checkout failed", err);
+      setError("Något gick fel vid betalningen. Försök igen.");
+    } finally {
+      setProcessing(false);
     }
   };
 
@@ -134,7 +152,13 @@ function Checkout() {
           <span>Totalt</span>
           <span>{cart.total} kr</span>
         </div>
-        <button className="checkout-btn">Betala (Swish)</button>
+        <button
+          className="checkout-btn"
+          onClick={handleCheckout}
+          disabled={processing}
+        >
+          {processing ? "Initierar Swish..." : "Betala (Swish)"}
+        </button>
       </div>
     </div>
   );

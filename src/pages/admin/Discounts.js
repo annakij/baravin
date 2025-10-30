@@ -147,7 +147,7 @@ function Discounts() {
 
               <div className="card-actions">
                 <p className="dates">Klicka för redigering..</p>
-                <a className="discounts-delete-btn" onClick={() => handleDelete(d.id)}>
+                <a className="discounts-delete-btn" onClick={(e) => { e.stopPropagation(); handleDelete(d.id); }}>
                   <Trash2 size={22} />
                 </a>
               </div>

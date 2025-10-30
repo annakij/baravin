@@ -69,7 +69,7 @@ const SignInForm = () => {
               <a className="link" href="/authenticate/registrera">Registrera dig!</a>
             </p>
             <p>Glömt ditt lösenord?{" "}
-              <a className="link" href="/">Klicka här</a>
+              <a className="link" href="/authenticate/request-reset">Klicka här</a>
             </p>
           </div>
         </form>

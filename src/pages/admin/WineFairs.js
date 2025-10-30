@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./WineFairs.css";
+import Loading from "../../components/admin/Loading";
 
 function WineFairs() {
   const [fairs, setFairs] = useState([]);
@@ -58,7 +59,7 @@ function WineFairs() {
     */
   }, []);
 
-  if (loading) return <p>Laddar vinmässor...</p>;
+  if (loading) return <Loading/>;
   if (error) return <p>{error}</p>;
 
   return (

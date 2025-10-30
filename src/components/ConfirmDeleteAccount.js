@@ -31,12 +31,14 @@ function ConfirmDeleteAccount({ isOpen, onClose }) {
     };
 
     return (
+      <div className="modal-overlay" onClick={onClose}>
         <div
-          className="confirm-popup"
+          className="modal"
           role="dialog"
           aria-modal="false"
           aria-labelledby="confirm-delete-title"
           ref={popupRef}
+          onClick={(e) => e.stopPropagation()}
         >
           <form onSubmit={handleSubmit}>
             <div className="confirm-header">
@@ -77,7 +79,7 @@ function ConfirmDeleteAccount({ isOpen, onClose }) {
               </button>
               <button
                 type="submit"
-                className="btn-danger"
+                className="btn-primary"
                 disabled={loading}
                 aria-disabled={loading}
               >
@@ -86,6 +88,8 @@ function ConfirmDeleteAccount({ isOpen, onClose }) {
             </div>
           </form>
         </div>
+
+      </div>
       );
 }
 
