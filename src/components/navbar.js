@@ -17,7 +17,7 @@ function Navbar({ cartCount }) {
   const [highlightIndex, setHighlightIndex] = useState(-1);
   const offcanvasRef = useRef(null);
 
-  const { user, logout } = useAuth();
+  const { user, logout, isAdmin } = useAuth();
   const navigate = useNavigate();
   const searchRef = useRef(null);
 
@@ -162,7 +162,7 @@ function Navbar({ cartCount }) {
           <li><Link to="/kontakt">Kontakt</Link></li>
           <li><Link to="/historia">Om Oss</Link></li>
           <li><Link to="/privat/instruktioner">Hur fungerar det?</Link></li>
-          {user && user.role === "0" && (
+          {isAdmin() && (
             <li><Link to="/admin/hem">Adminpanel</Link></li>
           )}
         </ul>
@@ -196,8 +196,10 @@ function Navbar({ cartCount }) {
           <li onClick={() => setMenuOpen(false)}><Link to="/event">Kommande Vinmässor</Link></li>
             <li onClick={() => setMenuOpen(false)}><Link to="/kontakt">Kontakt</Link></li>
             <li onClick={() => setMenuOpen(false)}><Link to="/privat/instruktioner">Hur fungerar det?</Link></li>
-            {user && user.role === "Admin" && (
-              <li onClick={() => setMenuOpen(false)}><Link to="/admin">Admin Panel</Link></li>
+            {isAdmin() && (
+              <li onClick={() => setMenuOpen(false)}>
+                <Link to="/admin/hem">Admin Panel</Link>
+              </li>
             )}
 
             {user ? (

@@ -1,5 +1,6 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "./context/authContext";
+import { ProtectedRoute } from './components/ProtectedRoute';
 import RegionsGridPage from "./pages/RegionsGrid";
 import RegionPage from "./pages/RegionPage";
 import RestaurantPage from "./pages/HoReCaPage";
@@ -56,18 +57,29 @@ function App() {
         <Route path="/" element={<StartPage />} />
         <Route path="/restaurang" element={<RestaurantPage />} />
 
-        <Route element={<AdminLayout />}>
-          <Route path="/admin/hem" element={<Dashboard />} />
-          <Route path="/admin/ordrar" element={<Orders />} />
-          <Route path="/admin/produkter" element={<Products />} />
-          <Route path="/admin/kunder" element={<Customers />} />
-          <Route path="/admin/rapporter" element={<Reports />} />
-          <Route path="/admin/rabatter" element={<Discounts />} />
-          <Route path="/admin/frakthantering" element={<Shipping />} />
-          <Route path="/admin/vinmassor" element={<WineFairs />} />
-          <Route path="/admin/nyhetsbrev" element={<MailManagement />} />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute requireAdmin>
+              <AdminLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Navigate to="/admin/hem" replace />} />
+          <Route path="hem" element={<Dashboard />} />
+          <Route path="ordrar" element={<Orders />} />
+          <Route path="produkter" element={<Products />} />
+          <Route path="kunder" element={<Customers />} />
+          <Route path="rapporter" element={<Reports />} />
+          <Route path="rabatter" element={<Discounts />} />
+          <Route path="frakthantering" element={<Shipping />} />
+          <Route path="vinmassor" element={<WineFairs />} />
+          <Route path="nyhetsbrev" element={<MailManagement />} />
+          <Route path="*" element={<Navigate to="/privat" replace />} />
         </Route>
-        
+
+        {/* Catch all unmatched routes */}
+        <Route path="*" element={<Navigate to="/privat" replace />} />
       </Routes>
       <CookieBanner />
     </AuthProvider>

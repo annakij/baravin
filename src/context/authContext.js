@@ -5,39 +5,45 @@ import Cookies from "js-cookie";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // { username, role }
-  
+  const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const refresh = async () => {
       const refreshToken = Cookies.get("refreshToken");
-      if (!refreshToken) return; // Return if no refresh token
-  
-      // If token - fetch user profile
+      if (!refreshToken) {
+        setIsLoading(false);
+        return;
+      }
+
       try {
-        const res = await api.get(
-          "/customer/profile"
-        );
-        setUser(res.data);
-  
+        const res = await api.get("/customer/profile");
+        setUser({
+          ...res.data,
+          role: Cookies.get("role") || res.data.role
+        });
       } catch (err) {
         setUser(null);
         Cookies.remove("jwtToken");
         Cookies.remove("refreshToken");
+        Cookies.remove("role");
+      } finally {
+        setIsLoading(false);
       }
     };
     refresh();
   }, []);
 
   const login = (userData) => {
-    // userData expected to contain jwtToken and user info
-    const { jwtToken, user: userInfo, refreshToken } = userData;
-
-    Cookies.set("jwtToken", userData.jwtToken, {expires:1, sameSite: 'Strict', secure: true});
-    Cookies.set("refreshToken", userData.refreshToken, {expires:7, sameSite: 'Strict', secure: true});
-    Cookies.set("role", userData.role, {expires:1, sameSite: 'Strict', secure: true});
+    const { jwtToken, refreshToken, role } = userData;
+    
+    // Set cookies with proper expiration
+    Cookies.set("jwtToken", jwtToken, {expires: 1, sameSite: 'Strict', secure: true});
+    Cookies.set("refreshToken", refreshToken, {expires: 7, sameSite: 'Strict', secure: true});
+    Cookies.set("role", role, {expires: 7, sameSite: 'Strict', secure: true});
 
     api.defaults.headers.common["Authorization"] = `Bearer ${jwtToken}`;
-    setUser(userInfo || userData);
+    setUser({...userData, role});
   };
 
   const logout = async () => {
@@ -48,8 +54,12 @@ export const AuthProvider = ({ children }) => {
     window.location.href = "/privat";
   };
 
+  const isAdmin = () => {
+    return user?.role === "0" || user?.role === "Admin";
+  };
+
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, isLoading, isAdmin }}>
       {children}
     </AuthContext.Provider>
   );

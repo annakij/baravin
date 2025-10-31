@@ -25,7 +25,9 @@ api.interceptors.response.use(
   (res) => res,
   async (error) => {
     const originalRequest = error.config;
-    if (error.response && error.response.status === 401 && !originalRequest._retry) {
+    
+    // Handle 401 (Unauthorized)
+    if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       try {
         const refreshToken = Cookies.get("refreshToken");
@@ -49,6 +51,12 @@ api.interceptors.response.use(
         return Promise.reject(err);
       }
     }
+    
+    // Handle 403 (Forbidden)
+    if (error.response?.status === 403) {
+      window.location.href = "/privat";
+    }
+    
     return Promise.reject(error);
   }
 );
