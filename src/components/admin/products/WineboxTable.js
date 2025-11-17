@@ -307,7 +307,7 @@ function WineboxTable({ wineboxes, regions, searchTerm, onRefresh }) {
               type="number"
               value={bulkPrice}
               onChange={(e) => setBulkPrice(e.target.value)}
-              placeholder="t.ex. +10 eller -15"
+              placeholder="t.ex. 100 eller -150"
             />
             {error && <p className="modal-error">{error}</p>}
             <div className="modal-actions">

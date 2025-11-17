@@ -29,7 +29,7 @@
 }
 
 .customer-table-wrapper {
-  overflow-x: auto; /* gör tabellen scrollbar på små skärmar */
+  overflow-x: scroll;
 }
 
 .customer-table {
@@ -58,6 +58,11 @@
 
 .customer-table tr:nth-child(even) {
   background: #fcfcfc;
+}
+
+.customer-table tr:hover,
+.customer-table tr:nth-child(even):hover {
+  background: #f1f1f1;
 }
 
 .cards-container {

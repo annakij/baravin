@@ -1,5 +1,6 @@
 import api from "../api/axiosInstance";
 
+// Fetch boxes for searchbar in navbar.
 export async function fetchWineboxes() {
   const res = await api.get("/regions");
   const regions = res.data || [];
@@ -12,9 +13,9 @@ export async function fetchWineboxes() {
         products.push({
           id: box.id,
           name: box.name,
-          // bild-URL baserat på regionnamn + box.image
+          // picture-URL based on region + regionname for box
           image: `${process.env.PUBLIC_URL}/images/regions/${region.name}`,
-          // länk till produktsida
+          // link to productpage
           url: `/region/${region.id}`,
         });
       });

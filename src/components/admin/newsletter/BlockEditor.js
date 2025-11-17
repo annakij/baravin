@@ -1,9 +1,11 @@
 import { useRef, useState, useEffect } from "react";
 import api from "../../../api/axiosInstance";
+import ImagePicker from "../ImagePicker";
 
 export default function BlockEditor({ block, updateBlock }) {
   const fileInputRef = useRef(null);
   const [products, setProducts] = useState([]);
+  const [pickerOpen, setPickerOpen] = useState(false);
 
   useEffect(() => {
     async function loadProducts() {
@@ -42,8 +44,8 @@ export default function BlockEditor({ block, updateBlock }) {
     if (!file) return;
 
     const fd = new FormData();
-    fd.append("image", file);
-    const res = await api.post("/api/upload-image", fd, {
+    fd.append("File", file);
+    const res = await api.post("/blob/upload", fd, {
       headers: { "Content-Type": "multipart/form-data" },
     });
 
@@ -79,6 +81,14 @@ export default function BlockEditor({ block, updateBlock }) {
         >
           Ladda upp bild
         </button>
+        <ImagePicker
+          isOpen={pickerOpen}
+          onClose={() => setPickerOpen(false)}
+          onSelect={(url) => updateBlock({ ...block, url })}
+        />
+
+        <button className="btn btn-secondary"
+        onClick={() => setPickerOpen(true)}>Välj bland bilder</button>
 
         <input
           type="file"

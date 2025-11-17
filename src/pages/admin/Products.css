@@ -80,10 +80,6 @@
   justify-content: flex-end;
   gap: 12px;
 }
-.cancel-btn,
-.save-btn {
-  padding: 0.5rem 1.5rem;
-}
 
 @media (max-width: 600px) {
   .modal-actions {

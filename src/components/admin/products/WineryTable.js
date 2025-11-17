@@ -278,7 +278,6 @@ function WineryTable({ regions, searchTerm, onRefresh }) {
               </button>
               <button
                 onClick={handleAddWinery}
-                className="save-btn"
                 disabled={loading}
               >
                 {loading ? "Sparar..." : "Spara"}

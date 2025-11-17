@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 export default function useScrollMemory(dependency) {
   const scrollYRef = useRef(0);
 
-  // 🧭 Spara scroll innan dependency ändras
+  // Save scroll
   useEffect(() => {
     const handleBefore = () => {
       scrollYRef.current = window.scrollY;
@@ -12,7 +12,7 @@ export default function useScrollMemory(dependency) {
     return () => window.removeEventListener("beforeunload", handleBefore);
   }, []);
 
-  // 🔄 Återställ scroll efter ny render
+  // Restore scroll after render
   useEffect(() => {
     window.scrollTo({ top: scrollYRef.current, behavior: "instant" });
   }, [dependency]);
