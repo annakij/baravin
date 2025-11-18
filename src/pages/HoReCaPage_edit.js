@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import WineyardHeader from "../images/punset_0547.jpg"
 import Logo from "../images/baravinlogo.avif"
 import "./HoReCaPage.css"
-import Footer from "../components/Footer.js"
+import Footer from "../components/Footer_edit.js"
 
 function RestaurantPage () {
     
