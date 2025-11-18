@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import Navbar from "../components/Navbar_edit";
-import Footer from "../components/Footer_edit";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import WhatsAppChat from "../components/WhatsAppChatt";
 import { useState } from "react";
 
