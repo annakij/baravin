@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const api = axios.create({
-  baseURL: "https://localhost:7001",
+  baseURL: "https://baravin.azurewebsites.net/",
   withCredentials: true,
   headers: {
     "XAppVersion": "0.1",
