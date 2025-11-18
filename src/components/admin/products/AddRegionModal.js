@@ -145,10 +145,10 @@ function AddRegionModal({ onClose, onSave }) {
 
         {/* Modal Actions */}
         <div className="modal-actions">
-          <button className="cancel-btn" onClick={onClose}>
+          <button onClick={onClose}>
             Avbryt
           </button>
-          <button className="save-btn" onClick={handleSave}>
+          <button onClick={handleSave}>
             Spara
           </button>
         </div>

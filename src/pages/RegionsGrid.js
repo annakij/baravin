@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NewsletterBanner from "../components/NewsletterBanner.js";
 import api from "../api/axiosInstance.js";
-import Loading from "../components/admin/Loading";
+import Loading from "../components/admin/Loading.js";
 import "./RegionsGrid.css";
 
 // Displays a grid of wine regions fetched from the backend API

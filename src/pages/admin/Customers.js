@@ -28,16 +28,29 @@ function Customers() {
   }, []);
 
   useEffect(() => {
-    const term = searchTerm.toLowerCase();
-    const filtered = profiles.filter(p =>
-      p.firstName?.toLowerCase().includes(term) ||
-      p.lastName?.toLowerCase().includes(term) ||
-      p.email?.toLowerCase().includes(term) ||
-      p.mobile?.toLowerCase().includes(term) ||
-      p.city?.toLowerCase().includes(term) 
-    );
+    const term = searchTerm.toLowerCase().trim();
+  
+    if (!term) {
+      setFilteredProfiles(profiles);
+      return;
+    }
+  
+    const filtered = profiles.filter((p) => {
+      const fullName = `${p.firstName || ""} ${p.lastName || ""}`.toLowerCase().trim();
+      const reversedName = `${p.lastName || ""} ${p.firstName || ""}`.toLowerCase().trim();
+  
+      return (
+        fullName.includes(term) ||
+        reversedName.includes(term) ||
+        p.email?.toLowerCase().includes(term) ||
+        p.mobile?.toLowerCase().includes(term) ||
+        p.city?.toLowerCase().includes(term)
+      );
+    });
+  
     setFilteredProfiles(filtered);
   }, [searchTerm, profiles]);
+  
 
   if (loading) return < Loading />;
   if (error) return <p>{error}</p>;
