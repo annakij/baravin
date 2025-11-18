@@ -1,4 +1,3 @@
-import fakeData from "../data/fulldata.json";
 import "../index.css";
 
 

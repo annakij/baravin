@@ -1,0 +1,104 @@
+.order-table-container {
+  overflow-x: auto;
+}
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.order-cards {
+  display: none;
+}
+
+.order-table th,
+.order-table td {
+  padding: 0.8rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
+  color: #5a1a1a;
+}
+
+.order-table th {
+  background: #fcfbf9;
+}
+
+.order-card {
+  background: #fcfbf9;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.order-card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #5a1a1a;
+}
+
+.order-card-body p {
+  margin: 0.2rem 0;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.status-badge {
+  padding: 0.25rem 0.6rem;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+}
+.status-0 {
+  background: #a67217;
+} /* Pågående */
+.status-1 {
+  background: #116530;
+} /* Betald */
+.status-2 {
+  background: #1b4281;
+} /* Avbruten */
+.status-3 {
+  background: #712b2b;
+} /* Cancellerad */
+
+.source-badge {
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  color: white;
+}
+.source-app {
+  background: #6f296a;
+}
+.source-web {
+  background: #0e835c;
+}
+
+/* Visa tabellen på desktop, kort på mobil */
+@media (max-width: 800px) {
+  .order-table-container {
+    display: none;
+  }
+  .order-cards {
+    display: grid;
+    gap: 1rem;
+  }
+  .order-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+  .order-card-header {
+    display: flex;
+    justify-content: space-between;
+  }
+  .order-card-body p {
+    margin: 1rem 0;
+  }
+}

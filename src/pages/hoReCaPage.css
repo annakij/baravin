@@ -1,47 +1,53 @@
 .custom-container {
-  margin: 0;
-  font-family: Georgia, Times, "Times New Roman", serif;
   text-align: center;
-  background-color: #f3ecec;
-  min-height: 100vh;
-  color: #420505;
+  overflow: hidden;
 }
-
-h1,
-p {
-  padding-top: 2rem;
-}
-
-#wineyardHeader {
-  width: 100vw;
+.wineyardHeader {
+  height: 100vh;
+  width: auto;
   position: relative;
+  overflow: hidden;
 }
-
-#baravinLogo {
-  position: fixed;
-  width: 5rem;
-  z-index: 1;
+.baravinLogo {
+  position: absolute;
+  bottom: 25px;
+  left: 25px;
+  width: 10rem;
+}
+.header-text {
+  position: absolute;
+  top: 45%;
   left: 50%;
-  transform: translate(-50%);
-  margin-top: 1rem;
-}
-
-button {
-  width: 220px;
-  letter-spacing: 2px;
-  padding: 0.8rem 1rem;
-  margin: 1rem 0;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 1.1rem;
-  background-color: #f3ecec;
-  color: #640606;
-  border: 2px solid #640606;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  background-color: #640606;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  letter-spacing: 1px;
   color: #fff;
-  transform: scale(1.05);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+.header-text h1 {
+  color: #fff;
+}
+.info-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: #640606;
+}
+.info-text p {
+  max-width: 500px;
+}
+.custom-button {
+  text-decoration: none;
+}
+
+@media (min-width: 1280px) {
+  .wineyardHeader {
+    height: 100vh;
+    width: 100%;
+  }
+  .baravinLogo {
+    width: 12rem;
+  }
 }

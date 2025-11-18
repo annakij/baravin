@@ -1,0 +1,83 @@
+.newsletter-banner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #e4dcd8;
+  padding: 0.5rem 0.5rem;
+  animation: slideDown 0.6s ease forwards;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 40px;
+  background: #f9f5f4;
+  overflow: hidden;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.newsletter-content {
+  text-align: center;
+  color: #3c2f2f;
+  line-height: 1.4;
+}
+.newsletter-banner .sub {
+  font-size: 0.8rem;
+  color: #999;
+  padding-top: 0.5rem;
+}
+
+.newsletter-content p {
+  margin: 0.25rem 0 0.75rem 0;
+  font-size: 0.95rem;
+}
+
+.newsletter-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.newsletter-form input {
+  border: 1px solid #d6c6c0;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  max-width: 400px;
+}
+
+.newsletter-form button {
+  background: #29462c;
+  color: white;
+  border: none;
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.newsletter-form button:hover {
+  background: #203221;
+}
+
+.banner-close-btn {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  color: #666;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  padding: 2px;
+}
+
+.banner-close-btn:hover {
+  opacity: 0.7;
+  transform: none;
+}

@@ -1,4 +1,4 @@
-.container {
+.start-site {
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -11,19 +11,19 @@
   background-color: #f3ecec;
 }
 
-#baravinheader {
+.start-header {
   width: 60vw;
   max-width: 400px;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
-p {
-  margin-bottom: 2rem;
+.start-text {
+  margin-bottom: 3rem;
 }
 
-#baravinlogo {
+.start-logo {
   width: 7rem;
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 
 .custom-button {
@@ -43,5 +43,4 @@ p {
 .custom-button:hover {
   background-color: #640606;
   color: #fff;
-  transform: scale(1.05);
 }

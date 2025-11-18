@@ -1,0 +1,236 @@
+/* Reset existing styles first */
+.admin-layout {
+  min-height: 100vh;
+  display: flex;
+}
+
+.admin-wrapper {
+  flex: 1;
+  margin-left: 300px;
+  transition: margin-left 0.3s ease;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Prevent double scrollbars */
+}
+
+.admin-wrapper.sidebar-collapsed {
+  margin-left: 70px;
+}
+
+/* Layout container */
+.admin-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.admin-topbar {
+  position: sticky;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  top: 0;
+  z-index: 50;
+  background: #f1efef;
+  padding: 0.5rem 1.5rem;
+  border-bottom: 1px solid #e5e7eb;
+  margin-left: 0; /* Remove the margin here */
+}
+
+.back-to-site {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: #374151;
+  font-weight: 600;
+  transition: color 0.2s ease;
+  text-decoration: none;
+}
+
+.back-to-site:hover {
+  color: #661a26;
+}
+
+.greeting-topbar p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #111827;
+}
+
+/* Sidebar styles */
+.sidebar {
+  background: #716262;
+  color: #eceaea;
+  width: 300px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 1000;
+}
+
+/* Collapsed or hidden */
+.sidebar.collapsed {
+  width: 70px;
+}
+.sidebar.collapsed .menu-toggle {
+  display: none;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.sidebar-header .logo {
+  width: 40px;
+  height: auto;
+  margin-right: 0.5rem;
+}
+
+.sidebar-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
+.menu-toggle {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+/* Navigation */
+.sidebar-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  margin-left: 8px;
+  color: #eceaea;
+  text-decoration: none;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  background: #665858;
+  color: #fff;
+}
+
+/* Main content area */
+.admin-content {
+  flex: 1;
+  padding: 2rem;
+  background: #f8f6f3;
+  overflow-y: auto;
+  height: calc(100vh - 60px); /* Subtract topbar height */
+  max-width: 100%;
+}
+
+/* Adjust margin when sidebar is collapsed */
+.sidebar.collapsed + .admin-content .admin-topbar {
+  margin-left: 70px;
+}
+
+/* Hamburger toggle on mobile */
+.mobile-toggle {
+  display: none;
+  position: fixed;
+  bottom: 1.2rem;
+  right: 1.2rem;
+  z-index: 1100;
+  background: #661a25ee;
+  color: white;
+  border: none;
+  font-size: 2.2rem;
+  text-align: center;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .admin-topbar {
+    margin-left: 0;
+  }
+  .sidebar {
+    position: fixed;
+    left: -300px;
+  }
+  .sidebar.open {
+    left: 0;
+  }
+  .greeting-topbar p {
+    display: none;
+  }
+  .sidebar.collapsed + .admin-content,
+  .admin-content {
+    margin-left: 0;
+    padding: 1rem;
+  }
+  .mobile-toggle {
+    display: block;
+  }
+  .admin-wrapper {
+    margin-left: 0;
+  }
+
+  .admin-wrapper.sidebar-collapsed {
+    margin-left: 0;
+  }
+
+  .admin-modal-overlay {
+    margin-left: 0;
+  }
+}
+
+/* Add new styles */
+.admin-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1500;
+  margin-left: 300px;
+  transition: margin-left 0.3s ease;
+}
+
+/* When sidebar is collapsed */
+.admin-wrapper.sidebar-collapsed .admin-modal-overlay {
+  margin-left: 70px;
+}
+
+/* Media query for mobile */
+@media (max-width: 768px) {
+  .admin-modal-overlay,
+  .admin-wrapper.sidebar-collapsed .admin-modal-overlay {
+    margin-left: 0;
+    width: 100%;
+  }
+}

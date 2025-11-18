@@ -1,0 +1,85 @@
+.whatsapp-widget {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 50;
+}
+
+.chat-box {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  width: 18rem;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.chat-title {
+  font-weight: 600;
+  margin-top: 0;
+}
+
+.chat-textarea {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  font-size: 0.875rem;
+  resize: none;
+  outline: none;
+}
+
+.chat-textarea:focus {
+  border-color: #29462c;
+  box-shadow: 0 0 0 2px #29462c;
+}
+
+.chat-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.75rem;
+  gap: 1rem;
+}
+
+.btn-close,
+.btn-send {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.chat-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #29462c;
+  color: white;
+  padding: 0.2rem 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.chat-toggle:hover {
+  background: #203221;
+}
+
+.chat-toggle p {
+  margin-left: 0.5rem;
+  font-weight: 500;
+  padding: 0;
+}
+
+@media (max-width: 640px) {
+  .toggle-text {
+    display: none;
+  }
+  .chat-toggle {
+    padding: 1.4rem;
+    border-radius: 9999px;
+  }
+}

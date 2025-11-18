@@ -1,40 +1,60 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useOutletContext, useParams } from "react-router-dom";
+import { useAuth } from "../context/authContext";
+import api from "../api/axiosInstance";
 import { useEffect, useState } from "react";
-import mockImg from "../images/regions/Abruzzo.png";
-import {ShoppingCart} from "lucide-react";
-import Footer from "../components/footer.js";
-import Navbar from "../components/navbar.js";
-import "./regionPage.css";
+import { ShoppingCart } from "lucide-react";
+import Loading from "../components/admin/Loading";
+import "./RegionPage.css";
 
 function RegionDetailPage() {
+  const { setCartCount } = useOutletContext();
   const location = useLocation();
-  const regionFromState = location.state;
-  const [region, setRegion] = useState(regionFromState || null);
+  const { id } = useParams();
+  const { user } = useAuth();
+  const [region, setRegion] = useState(location.state || null);
   const [selectedBox, setSelectedBox] = useState(null);
-  const [loading, setLoading] = useState(!regionFromState);
+  const [loading, setLoading] = useState(!location.state);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // hämta från API om region inte redan skickades via state
-    if (!regionFromState) {
-      const fetchRegion = async () => {
-        try {
-          setLoading(true);
-          const res = await fetch(); 
-          if (!res.ok) throw new Error("Kunde inte hämta region");
-          const data = await res.json();
-          setRegion(data);
-        } catch (err) {
-          setError(err.message);
-        } finally {
-          setLoading(false);
-        }
-      };
-      fetchRegion();
+    if (location.state) {
+      setRegion(location.state);
+      setLoading(false);
+      return;
     }
-  }, [regionFromState, location.pathname]);
 
-  if (loading) return <p>Laddar region...</p>;
+    const fetchRegion = async () => {
+      try {
+        setLoading(true);
+        const res = await api.get("/regions");
+        const regions = res.data || [];
+        const found = regions[parseInt(id)];
+        setRegion(found || null);
+      } catch (err) {
+        setError("Kunde inte hämta region.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRegion();
+  }, [location.state, id]);
+
+  const handleAddToCart = async (boxId) => {
+    if (!user) {
+      alert("Du måste vara inloggad för att lägga till produkter");
+      return;
+    }
+    try {
+      await api.put(`/cart?boxId=${boxId}`);
+      setCartCount(prev => prev + 1);
+    } catch (err) {
+      console.error(err);
+      setCartCount(prev => prev + 1);
+    }
+  };
+
+  if (loading) return <Loading />;
   if (error) return <p>Något gick fel: {error}</p>;
   if (!region) return <p>Ingen region hittades</p>;
 
@@ -43,52 +63,46 @@ function RegionDetailPage() {
   ) || [];
 
   return (
-    <>
-    <Navbar/>
-    <div className="region-detail">
+    <div className="region-details">
       <h1>{region.name}</h1>
       <p>{region.description}</p>
 
-      {region.wineries?.map((winery, wIndex) => (
-        <div key={wIndex} className="winery-section">
-
+      <div className="winery-section">
         <div className="wineboxes-container">
           {allWineBoxes.map((box, index) => (
             <div key={index} className="winebox-card">
               <div className="winebox-image">
-              <img 
-                src={`${process.env.PUBLIC_URL}/images/regions/${region.name}.png`} 
-                alt={region.name} 
-              />
+                <img
+                  src={`/images/regions/${region.name}.png`}
+                  alt={region.name}
+                />
               </div>
               <div className="winebox-content">
-                <h3>{box.name}</h3>
-                <p>{box.description}</p>
-                <p><strong>Pris:</strong> {box.price} kr</p>
-                <p><em>Från: {box.wineryName}</em></p>
+                <div className="winebox-info">
+                  <h3>{box.name}</h3>
+                  <p>{box.description}</p>
+                  <p><strong>Pris:</strong> {box.price} kr</p>
+                </div>
                 <div className="winebox-buttons">
                   <button onClick={() => setSelectedBox(box)}>Detaljer</button>
-                  <button><ShoppingCart /></button>
+                  <button onClick={() => handleAddToCart(box.id)}>
+                    <ShoppingCart />
+                  </button>
                 </div>
               </div>
             </div>
           ))}
         </div>
-        </div>
-      ))}
+      </div>
 
-      {/* MODAL VINBOX DETALJER */}
+      {/* 🪟 Modal */}
       {selectedBox && (
         <div className="modal-overlay" onClick={() => setSelectedBox(null)}>
-          <div
-            className="modal-content"
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <h2>{selectedBox.name}</h2>
-
             <h3>Innehåll:</h3>
-            {selectedBox.bottles.map((bottle, i) => (
-              <div key={i} className="bottle-card">
+            {selectedBox.bottles.map((bottle, index) => (
+              <div key={index} className="bottle-card">
                 <h4>{bottle.title} ({bottle.year})</h4>
                 <p><strong>Druvor:</strong> {bottle.grape}</p>
                 <p><strong>Område:</strong> {bottle.area}</p>
@@ -98,14 +112,11 @@ function RegionDetailPage() {
                 <p><strong>Antal flaskor:</strong> {bottle.count}</p>
               </div>
             ))}
-
             <button onClick={() => setSelectedBox(null)}>Stäng</button>
           </div>
         </div>
       )}
     </div>
-    <Footer/>
-    </>
   );
 }
 

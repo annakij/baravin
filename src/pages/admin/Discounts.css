@@ -1,0 +1,119 @@
+.discounts-page {
+  padding: 1rem;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.discounts-search-input {
+  margin: 1rem;
+  border-radius: 5px;
+}
+
+.discount-code {
+  color: #272727eb;
+}
+
+.discounts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.discount-card {
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+  position: relative;
+  transition: 0.3s;
+  background-color: #fff;
+}
+
+.discount-card:hover {
+  transform: scale(1.02);
+}
+
+.discount-card.active {
+  border-left: 8px solid #257141;
+  background: #c8dccc;
+}
+.discount-card.upcoming {
+  border-left: 8px solid #244e92;
+  background-color: #b6c7e2;
+}
+.discount-card.expired {
+  border-left: 8px solid #6c2d2d;
+  background-color: #dfbaba;
+}
+
+.discount-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.status-badge {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  color: white;
+}
+.status-badge.active {
+  background: #257141;
+}
+.status-badge.upcoming {
+  background: #244e92;
+}
+.status-badge.expired {
+  background: #6c2d2d;
+}
+
+.amount {
+  font-size: 1.2rem;
+}
+
+.dates {
+  color: #282727;
+  font-size: 0.9rem;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.discounts-delete-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #282727;
+  transition: color 0.2s;
+}
+
+.discount-form input {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+@media (max-width: 1000px) {
+  .discounts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .discounts-grid {
+    grid-template-columns: 1fr;
+  }
+}

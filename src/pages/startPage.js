@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import BaraVinHeader from "../images/BARA_VIN_logo_transparent.png"
 import Logo from "../images/baravinlogo.avif"
-import "./startPage.css";
+import "./StartPage.css";
 
 
 function StartPage () {
@@ -9,9 +9,9 @@ function StartPage () {
     const navigate = useNavigate();
 
     return (
-        <div className="container">
-            <img src= {BaraVinHeader} alt="Bara Vin Header" id="baravinheader"/>
-            <p>Dessa sidor innehåller information om vin och vänder sig därför endast till dig som är över 20 år. Handla ansvarsfullt!</p>
+        <div className="start-site">
+            <img className="start-header" src= {BaraVinHeader} alt="Bara Vin Header"/>
+            <p className="start-text">Dessa sidor innehåller information om vin och vänder sig därför endast till dig som är över 20 år. Handla ansvarsfullt!</p>
             
             <button className="custom-button" onClick={() => navigate("/privat")}>
                 Privat
@@ -21,7 +21,7 @@ function StartPage () {
                 Restaurang
             </button>
 
-            <img src={Logo} alt="Bara Vin Logo" id="baravinlogo"/>
+            <img className="start-logo" src={Logo} alt="Bara Vin Logo"/>
         </div>
     )
 }

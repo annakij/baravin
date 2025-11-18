@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Footer from "../components/footer.js";
-import Navbar from "../components/navbar.js";
-import "./regionsGrid.css";
+import NewsletterBanner from "../components/NewsletterBanner.js";
+import api from "../api/axiosInstance.js";
+import Loading from "../components/admin/Loading";
+import "./RegionsGrid.css";
 
-
+// Displays a grid of wine regions fetched from the backend API
 function RegionsGridPage() {
   const [regions, setRegions] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -13,31 +14,26 @@ function RegionsGridPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const url = 'https://localhost:7001/regions'; // API-ENDPOINT
-
-    fetch(url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'XAppVersion': '0.1' // HEADER REQUIREMENT
+    const fetchRegions = async () => {
+      try {
+        const res = await api.get("/regions"); // baseURL from axios + "/regions"
+        setRegions(res.data || []);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
       }
-    })
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-        return res.json();
-      })
-      .then((data) => setRegions(data || []))
-      .catch((err) => setError(err.message))
-      .finally(() => setLoading(false));
+    };
+
+    fetchRegions();
   }, []);
 
-  if (loading) return <p>Laddar...</p>;
+  if (loading) return <Loading />;
   if (error) return <p>Något gick fel: {error}</p>;
 
   return (
-    <div className="app-container">
-      <Navbar />
       <main className="main-content">
+        <NewsletterBanner />
         <div className="regions-grid">
           {regions.map((region, index) => (
             <div
@@ -45,10 +41,13 @@ function RegionsGridPage() {
               className="region-card"
               onClick={() => navigate(`/region/${index}`, { state: region })}
             >
-              <img 
-                src={`${process.env.PUBLIC_URL}/images/regions/${region.name}.png`} 
-                alt={region.name} 
-              />
+              <img
+              src={`${process.env.PUBLIC_URL}/images/regions/${region?.name}.png`}
+              alt={region?.name || "Valle"}
+              onError={(e) => {
+                e.currentTarget.src = `${process.env.PUBLIC_URL}/images/regions/Valle.png`;
+              }}
+            />
 
               <div className="region-content">
                 <h2 className="region-title">{region.name}</h2>
@@ -59,8 +58,6 @@ function RegionsGridPage() {
           ))}
         </div>
       </main>
-      <Footer />
-    </div>
   );
 }
 

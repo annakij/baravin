@@ -1,0 +1,27 @@
+.confirm-input {
+  display: block;
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 6px;
+  border: 1px solid #d1d5db;
+  box-sizing: border-box;
+  font-size: 0.95rem;
+}
+/* error */
+.confirm-error {
+  margin-top: 8px;
+  color: #731515;
+  font-size: 0.9rem;
+}
+/* actions */
+.confirm-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+.btn[disabled],
+.btn[aria-disabled="true"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

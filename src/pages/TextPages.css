@@ -1,0 +1,39 @@
+/* ======= INSTRUCTIONS, ABOUT ========== */
+.instructions-page,
+.about-page {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.instructions-page img,
+.about-page img {
+  max-width: 50%;
+  height: auto;
+  align-self: center;
+  margin: 2rem;
+}
+
+/* ======= CONTACT ========== */
+.contact-page {
+  display: block;
+  text-align: center;
+  padding: 20px;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+.contact-address {
+  margin-top: 5rem;
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
+
+/* ======= TERMS & CONDITIONS ========== */
+.terms-page {
+  display: block;
+  text-align: left;
+  padding: 20px;
+  max-width: 800px;
+  margin: 1rem auto;
+}

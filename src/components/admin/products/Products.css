@@ -1,0 +1,122 @@
+.admin-information-tab {
+  padding: 1rem 2rem;
+}
+
+.products-topbar {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.products-topbar-icon {
+  cursor: pointer;
+  font-size: 32px;
+  padding: 0 0.1rem;
+  width: 50px;
+  border: solid 1px #9c9191;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+.winery-edit {
+  cursor: pointer;
+}
+
+.admin-winebox-table {
+  background: #fcfbf9;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+.admin-winery-block {
+  margin-bottom: 2rem;
+}
+
+.admin-winery-name {
+  font-size: 1.4rem;
+  color: #5a1a1a;
+  margin-bottom: 0.8rem;
+}
+
+.admin-wineboxes-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.admin-winebox-card {
+  background: #fff;
+  padding: 1rem;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+}
+
+.winebox-card-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.winebox-card-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.admin-winebox-name {
+  font-weight: bold;
+  color: #5a1a1a;
+  margin-bottom: 0.3rem;
+}
+
+.admin-winebox-desc,
+.admin-winebox-price,
+.admin-winebox-qty {
+  font-size: 0.85rem;
+  color: #555;
+  margin-bottom: 0.2rem;
+}
+
+.admin-bottles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 0.8rem;
+}
+
+.admin-bottle-card {
+  background: #f1efef;
+  padding: 0.8rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.admin-bottle-card .sub {
+  color: #777;
+  margin: 0.1rem 0;
+}
+
+mark {
+  background: #ed63639d;
+}
+
+.admin-bulk-edit-btn {
+  background-color: #661a26;
+  color: white;
+  border: none;
+  width: 300px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sub {
+  color: #171717;
+}
+
+@media (max-width: 768px) {
+  .admin-bottles-grid {
+    grid-template-columns: 1fr;
+  }
+}
