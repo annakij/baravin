@@ -23,17 +23,17 @@ function Reports() {
 
       if (activeTab === "day") {
         await api.get(
-          `/reports/dayreport?year=${params.year}&month=${params.month}&day=${params.day}`
+          `/admin/dayreport?year=${params.year}&month=${params.month}&day=${params.day}`
         );
       } else if (activeTab === "month") {
         await api.get(
-          `/reports/sendmonthlyreport?year=${params.year}&month=${params.month}`
+          `/admin/sendmonthlyreport?year=${params.year}&month=${params.month}`
         );
       } else if (activeTab === "period") {
         const from = new Date(params.from);
         const to = new Date(params.to);
         await api.get(
-          `/reports/sendweeklyreport?fromYear=${from.getFullYear()}&fromMonth=${
+          `/admin/getweeklyreport?fromYear=${from.getFullYear()}&fromMonth=${
             from.getMonth() + 1
           }&fromDay=${from.getDate()}&tillYear=${to.getFullYear()}&tillMonth=${
             to.getMonth() + 1
