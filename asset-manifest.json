@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/baravin/static/css/main.1c660fc5.css",
+    "main.js": "/baravin/static/js/main.e339bffa.js",
+    "static/media/punset_0547.jpg": "/baravin/static/media/punset_0547.f77c2ec3286a5931ae6f.jpg",
+    "static/media/BARA_VIN_logo_transparent.png": "/baravin/static/media/BARA_VIN_logo_transparent.fe2ab1a57ab9956a2974.png",
+    "static/media/baravinlogo.avif": "/baravin/static/media/baravinlogo.fd3b2b1be253a5ebe2b6.avif",
+    "index.html": "/baravin/index.html",
+    "main.1c660fc5.css.map": "/baravin/static/css/main.1c660fc5.css.map",
+    "main.e339bffa.js.map": "/baravin/static/js/main.e339bffa.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1c660fc5.css",
+    "static/js/main.e339bffa.js"
+  ]
+}
