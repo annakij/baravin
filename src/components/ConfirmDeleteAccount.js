@@ -1,4 +1,4 @@
-import { useState, useRef, inputRef, popupRef } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/axiosInstance";
 import "./ConfirmDeleteAccount.css";
@@ -8,6 +8,12 @@ function ConfirmDeleteAccount({ isOpen, onClose }) {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
+
+    const popupRef = useRef(null);
+    const inputRef = useRef(null);
+
+    if (!isOpen) return null;
+
 
     if (!isOpen) return null;
 
